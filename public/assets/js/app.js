@@ -13,7 +13,8 @@ let app = {
         app.elements.formDays = document.querySelectorAll('.block__form');
         app.elements.resultBtn = document.querySelector('.calc__result');
         app.elements.resultPerDay= document.querySelectorAll('.standardResult');
-      
+        app.elements.resetBtn = document.querySelectorAll('.reset');
+
         app.startListening();
         
     },
@@ -23,7 +24,15 @@ let app = {
             element.addEventListener('submit', app.handleSetDaysValue);
         });
 
+        app.elements.resetBtn.forEach(element => {
+            element.addEventListener('click', app.resetFieldForDay);
+        })
+
         app.elements.resultBtn.addEventListener('click', app.handleResultCalc);
+    },
+
+    resetFieldForDay: function (event) {
+        console.log(event);
     },
 
     handleResultCalc: function (event) {
