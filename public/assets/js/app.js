@@ -14,9 +14,9 @@ let app = {
         app.elements.resultBtn = document.querySelector('.calc__result');
         app.elements.resultPerDay= document.querySelectorAll('.standardResult');
         app.elements.resetBtn = document.querySelectorAll('.reset');
-
-        app.startListening();
+        app.elements.totalResultInputs = document.querySelectorAll('.total__result');
         
+        app.startListening();
     },
 
     startListening: function () {
@@ -32,7 +32,20 @@ let app = {
     },
 
     resetFieldForDay: function (event) {
-        console.log(event);
+        const day = event.target.dataset.day;
+        const dayInputs = app.getAllCurrentInput(day);
+        const dayResultInputs = app.getAllCurrentInput(`${day}__result`);
+        
+        app.clearInputs(dayInputs);
+        app.clearInputs(app.elements.totalResultInputs);
+        app.clearInputs(dayResultInputs);
+    },
+
+    clearInputs : function (inputs) {
+        inputs.forEach(input => {
+            input.value = "";
+            input.removeAttribute("disabled", "");
+        })
     },
 
     handleResultCalc: function (event) {
@@ -41,13 +54,11 @@ let app = {
 
 
     handleSetDaysValue: function (event) {
-        event.preventDefault();
-       
+        event.preventDefault(); 
         const formDay = event.target.dataset.day;
         const daysInput = app.getAllCurrentInput(formDay);
         
         app.setDayValue(daysInput);
-
     },
 
     getAllCurrentInput: function (day) {
@@ -82,23 +93,19 @@ let app = {
     
                     const deltaDayTotal = deltaMorningTime.add(deltaAfternoonTime);
     
-                    return deltaDayTotal;
-                    
+                    return deltaDayTotal;    
                 }
     
                 return deltaMorningTime;       
                 
             } else {
-                
                 const startPM = moment(`${app.moment} ${timeObjects[2].value}`);
                 const endPM = moment(`${app.moment} ${timeObjects[3].value}`);
                 
                 const deltaTime = moment.duration(endPM.diff(startPM));
     
-                return deltaTime
-                
+                return deltaTime     
             }
-
         } else {
 
             for (let index = 0; index < 4; index++) {
@@ -117,22 +124,17 @@ let app = {
     },
 
     setDayValue: function (inputs) {
-        
-        
         const selector = `${inputs[0].dataset.day}__result__standard`;
-
         app.setTimeValueForDay(app.calcDuration(inputs), selector);
     },
 
-    setTimeValueForDay: function (detail, selector) {
-        
+    setTimeValueForDay: function (detail="", selector) {    
         const currentInput = document.getElementById(selector);
        
         const nextInput = currentInput.parentNode.nextSibling.nextSibling.childNodes[1];
     
         currentInput.value = `${detail._data.hours}h${detail._data.minutes}`;
-        nextInput.value = `${detail._data.hours}h${app.inHundredths(detail._data.minutes)}`
-        
+        nextInput.value = `${detail._data.hours}h${app.inHundredths(detail._data.minutes)}`;    
     }
 }
 
