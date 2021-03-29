@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/style/style.css">
+
+  <title>Time Converter</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+      <div class="container">
+        <a class="navbar-brand" href="#">Time Converter</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+
+            </li>
+          </ul>
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item ">
+                <a class="nav-link ml-3" href="#">S'enregister</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#">Se connecter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="container text-center mt-5">
+
+    <p>Calculer les heures de vos contrats sans risque d'oublies grâce au convertisseur de <span>Time Converter</span>
+    </p>
+
+  </section>
+  <main class="container">
+    <h1>Demi-journée</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered border-danger table-hover align-middle ">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Jour</th>
+            <th scope="col" class="text-center">Matin 6H/12H </th>
+            <th scope="col" class="text-center">Après-midi 13H/20H</th>
+            <th scope="col" class="text-center">Journée 6H/20H</th>
+            <th scope="col" class="text-center"></th>
+            <th scope="col" class="text-center">Heures et minutes</th>
+            <th scope="col" class="text-center">Heures facturées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Lundi</th>
+            <form action="" class="block__form" data-day="monday">
+              <td class="time__block">
+                <input class="inputs monday" data-day="monday" data-complete="false" data-time="morning"
+                  data-moment="start" type="time" min="06:00" max="12:00" name="" id="monday__morning__start">
+                <input class="inputs monday" data-day="monday" data-complete="false" data-time="morning"
+                  data-moment="end" type="time" min="06:00" max="12:00" name="" id="monday__morning__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs monday" data-day="monday" data-complete="false" data-time="afternoon"
+                  data-moment="start" type="time" min="13:00" max="20:00" name="" id="monday__afternoon__start">
+                <input class="inputs monday" data-day="monday" data-complete="false" data-time="afternoon"
+                  data-moment="end" type="time" min="13:00" max="20:00" name="" id="monday__afternoon__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs" data-day="monday" data-complete="true" data-moment="start" type="time"
+                  min="06:00" max="20:00" name="" id="monday__start">
+                <input class="inputs" data-day="monday" data-complete="true" data-moment="end" type="time"
+                  min="06:00" max="20:00" name="" id="monday__end">
+              </td>
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="monday" type="submit">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result monday__result " id="monday__result__standard">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result monday__result--hundred"
+                  id="monday__result__hundredths">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Mardi</th>
+            <form action="" class="block__form" data-day="tuesday">
+              <td class="time__block">
+                <input class="inputs tuesday" data-day="tuesday" data-complete="false" data-time="morning"
+                  data-moment="start" type="time" min="06:00" max="12:00" name="" id="tuesday__morning__start">
+                <input class="inputs tuesday" data-day="tuesday" data-complete="false" data-time="morning"
+                  data-moment="end" type="time" min="06:00" max="12:00" name="" id="tuesday__morning__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs tuesday" data-day="tuesday" data-complete="false" data-time="afternoon"
+                  data-moment="start" type="time" min="13:00" max="20:00" name="" id="tuesday__afternoon__start">
+                <input class="inputs tuesday" data-day="tuesday" data-complete="false" data-time="afternoon"
+                  data-moment="end" type="time" min="13:00" max="20:00" name="" id="tuesday__afternoon__end">
+              </td>
+              <form action="" class="block__form" data-day="tuesday">
+                <td class="time__block">
+                  <input class="inputs" data-day="tuesday" data-complete="true" data-moment="start" type="time"
+                    min="06:00" max="20:00" name="" id="tueday__start">
+                  <input class="inputs" data-day="tuesday" data-complete="true" data-moment="end" type="time"
+                    min="06:00" max="20:00" name="" id="tueday__end">
+                </td>
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="tuesday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result tuesday__result " id="tuesday__result__standard">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result tuesday__result--hundred"
+                  id="tuesday__result__hundredths">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Mercredi</th>
+            <form action="" class="block__form" data-day="wednesday">
+              <td class="time__block">
+                <input class="inputs wednesday" data-day="wednesday" data-complete="false" data-time="morning"
+                  data-moment="start" type="time" min="06:00" max="12:00" name="" id="wednesday__morning__start">
+                <input class="inputs wednesday" data-day="wednesday" data-complete="false" data-time="morning"
+                  data-moment="end" type="time" min="06:00" max="12:00" name="" id="wednesday__morning__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs wednesday" data-day="wednesday" data-complete="false" data-time="afternoon"
+                  data-moment="start" type="time" min="13:00" max="20:00" name="" id="wednesday__afternoon__start">
+                <input class="inputs wednesday" data-day="wednesday" data-complete="false" data-time="afternoon"
+                  data-moment="end" type="time" min="13:00" max="20:00" name="" id="wednesday__afternoon__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs" data-day="wednesday" data-complete="true" data-moment="start"
+                  type="time" min="06:00" max="20:00" name="wednesday__start" id="">
+                <input class="inputs" data-day="wednesday" data-complete="true" data-moment="end" type="time"
+                  min="06:00" max="20:00" name="" id="wednesday__end">
+
+              </td>
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="wednesday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result wednesday__result " id="wednesday__result__standard">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result wednesday__result--hundred"
+                  id="wednesday__result__hundredths">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Jeudi</th>
+            <form action="" class="block__form" data-day="thursday">
+              <td class="time__block">
+                <input class="inputs thursday" data-day="thursday" data-complete="false" data-time="morning"
+                  data-moment="start" type="time" min="06:00" max="12:00" name="" id="thursday__morning__start">
+                <input class="inputs thursday" data-day="thursday" data-complete="false" data-time="morning"
+                  data-moment="end" type="time" min="06:00" max="12:00" name="" id="thursday__morning__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs thursday" data-day="thursday" data-complete="false" data-time="afternoon"
+                  data-moment="start" type="time" min="13:00" max="20:00" name="" id="thursday__afternoon__start">
+                <input class="inputs thursday" data-day="thursday" data-complete="false" data-time="afternoon"
+                  data-moment="end" type="time" min="13:00" max="20:00" name="" id="thursday__afternoon__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs" data-day="thursday" data-complete="true" data-moment="start" type="time"
+                  min="06:00" max="20:00" name="" id="thursday__start">
+                <input class="inputs" data-day="thursday" data-complete="true" data-moment="end" type="time"
+                  min="06:00" max="20:00" name="" id="thursday__end">
+
+              </td>
+
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="thursday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result thursday__result " id="thursday__result__standard">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result thursday__result--hundred"
+                  id="thursday__result__hundredths">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Vendredi</th>
+            <form action="" class="block__form" data-day="friday">
+              <td class="time__block">
+                <input class="inputs friday" data-day="friday" data-complete="false" data-time="morning"
+                  data-moment="start" type="time" min="06:00" max="12:00" name="" id="friday__morning__start">
+                <input class="inputs friday" data-day="friday" data-complete="false" data-time="morning"
+                  data-moment="end" type="time" min="06:00" max="12:00" name="" id="friday__morning__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs friday" data-day="friday" data-complete="false" data-time="afternoon"
+                  data-moment="start" type="time" min="13:00" max="20:00" name="" id="friday__afternoon__start">
+                <input class="inputs friday" data-day="friday" data-complete="false" data-time="afternoon"
+                  data-moment="end" type="time" min="13:00" max="20:00" name="" id="friday__afternoon__end">
+              </td>
+              <td>
+                <input class="inputs" data-day="friday" data-complete="true" data-moment="start" type="time"
+                  min="06:00" max="20:00" name="" id="friday__start">
+                <input class="inputs" data-day="friday" data-complete="true" data-moment="end" type="time"
+                  min="06:00" max="20:00" name="" id="friday__end">
+
+              </td>
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="friday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result friday__result " id="friday__result__standard">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result friday__result--hundred"
+                  id="friday__result__hundredths">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Samedi</th>
+            <form action="" class="block__form" data-day="saturday">
+              <td class="time__block">
+                <input class="inputs saturday" data-day="saturday" data-complete="false" data-time="morning"
+                  data-moment="start" type="time" min="06:00" max="12:00" name="" id="saturday__morning__start">
+                <input class="inputs saturday" data-day="saturday" data-complete="false" data-time="morning"
+                  data-moment="end" type="time" min="06:00" max="12:00" name="" id="saturday__morning__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs saturday" data-day="saturday" data-complete="false" data-time="afternoon"
+                  data-moment="start" type="time" min="13:00" max="20:00" name="" id="saturday__afternoon__start">
+                <input class="inputs saturday" data-day="saturday" data-complete="false" data-time="afternoon"
+                  data-moment="end" type="time" min="13:00" max="20:00" name="" id="saturday__afternoon__end">
+              </td>
+              <td class="time__block">
+                <input class="inputs" data-day="saturday" data-complete="true" data-moment="start" type="time"
+                  min="06:00" max="20:00" name="" id="saturday__start">
+                <input class="inputs" data-day="saturday" data-complete="true" data-moment="end" type="time"
+                  min="06:00" max="20:00" name="" id="saturday__end">
+
+              </td>
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="saturday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result saturday__result " id="saturday__result__standard">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result saturday__result--hundred"
+                  id="saturday__result__hundredths">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <td colspan="5"></td>
+            <td colspan="2">
+              <button class="calc__result btn btn-outline-danger d-block m-auto" data-day="hundredthsTime">
+                Calculer
+              </button>
+            </td>
+          </tr>
+          <tr class="table-danger mt-3">
+            <th colspan="5" class="text-end" scope="row">Total</th>
+            <td class="text-center"><input readonly type="number" name="" class="total-result" id=""></td>
+            <td class="text-center"><input readonly type="number" name="" class="total-hundred-result" id=""></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+    
+
+    <!--<h1 class="mt-3">Journée Complète</h1>
+
+    <div class="table-responsive">
+      <table class="table table-bordered border-danger table-hover align-middle ">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Jour</th>
+            <th scope="col" class="text-center">Journée complète</th>
+            <th></th>
+            <th scope="col" class="text-center">Heures et minutes</th>
+            <th scope="col" class="text-center">Heures facturées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Lundi</th>
+            <form action="" class="block__form" data-day="monday">
+              
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="monday" type="submit">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result monday__result " id="monday__result__standard__complete">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result monday__result--hundred"
+                  id="monday__result__hundredths__complete">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Mardi</th>
+            
+
+
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="tuesday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result tuesday__result " id="tueday__result__standard__complete">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class="result tuesday__result--hundred"
+                  id="tueday__result__hundredths__complete">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Mercredi</th>
+            <form action="" class="block__form" data-day="wednesday">
+              
+
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="wednesday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result wednesday__result " id="wednesday__result__standard__complete">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result wednesday__result--hundred"
+                  id="wednesday__result__hundredths__complete">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Jeudi</th>
+            <form action="" class="block__form" data-day="thursday">
+              
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="thursday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result thursday__result " id="thursday__result__standard__complete">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result thursday__result--hundred"
+                  id="thursday__result__hundredths__complete">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Vendredi</th>
+            <form action="" class="block__form" data-day="friday">
+              
+
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="friday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result friday__result " id="friday__result__standard__complete">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result friday__result--hundred"
+                  id="friday__result__hundredths__complete">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <th scope="row">Samedi</th>
+            <form action="" class="block__form" data-day="saturday">
+              
+
+              <td>
+                <button class="calc btn btn-outline-danger d-block m-auto" data-day="saturday">
+                  Calculer
+                </button>
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result saturday__result " id="saturday__result__standard__complete">
+              </td>
+              <td class="text-center">
+                <input readonly type="text" name="" class=" result saturday__result--hundred"
+                  id="saturday__result__hundredths__complete">
+              </td>
+            </form>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td colspan="2">
+              <button class="calc btn btn-outline-danger d-block m-auto" data-day="hundredthsTime">
+                Calculer
+              </button>
+            </td>
+          </tr>
+          <tr class="table-danger mt-3">
+            <th  colspan="3" class="text-end" scope="row">Total</th>
+            <td class="text-center"><input readonly type="number" name="" class="total-result" id=""></td>
+            <td class="text-center"><input readonly type="number" name="" class="total-hundred-result" id=""></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>-->
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"></script>
+  
+  <script src="./assets/js/app.js"></script>
+
+
+</body>
+
+</html>
