@@ -6,6 +6,7 @@ let app = {
     
     moment: "1988-12-01",
 
+    hoursInMinutes: 60,
 
     init: function () {
         
@@ -28,7 +29,7 @@ let app = {
             element.addEventListener('click', app.resetFieldForDay);
         })
 
-        app.elements.resultBtn.addEventListener('click', app.handleResultCalc);
+        app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
     },
 
     resetFieldForDay: function (event) {
@@ -48,11 +49,33 @@ let app = {
         })
     },
 
-    handleResultCalc: function (event) {
-        const dayArray = []
+    convertTimeResult: function (timeValue) {
+        return timeValue.replace("h", ":");
+    },
+
+    handleSubmitTotalCalc: function (event) {
+        const dayArray = []; 
         app.elements.resultForAllDays.forEach(day => {
-            console.log(day.value);
+            if (day.value !== "") {
+                dayArray.push(moment(`${app.moment} ${app.convertTimeResult(day.value)}`).toObject());
+            }
         })
+        app.calcTotal(dayArray);
+    },
+
+    calcTotal: function (dateArray) {
+        let resultHours = 0;
+        let resultMinutes = 0;
+        dateArray.forEach(date => {
+            resultHours += date.hours;
+            resultMinutes += date.minutes;
+
+            while (resultMinutes >= app.hoursInMinutes) {
+                resultMinutes -= app.hoursInMinutes;
+                resultHours++;
+            }
+        });
+    
     },
 
 
