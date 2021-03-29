@@ -12,7 +12,7 @@ let app = {
         console.log('app.init');
         app.elements.formDays = document.querySelectorAll('.block__form');
         app.elements.resultBtn = document.querySelector('.calc__result');
-        app.elements.resultPerDay= document.querySelectorAll('.standardResult');
+        app.elements.resultForAllDays= document.querySelectorAll('.standardResult');
         app.elements.resetBtn = document.querySelectorAll('.reset');
         app.elements.totalResultInputs = document.querySelectorAll('.total__result');
         
@@ -49,7 +49,10 @@ let app = {
     },
 
     handleResultCalc: function (event) {
-        console.log('event de demande resultat')
+        const dayArray = []
+        app.elements.resultForAllDays.forEach(day => {
+            console.log(day.value);
+        })
     },
 
 
