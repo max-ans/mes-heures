@@ -6,11 +6,13 @@ let app = {
     
     moment: "1988-12-01",
 
+
     init: function () {
         
         console.log('app.init');
         app.elements.formDays = document.querySelectorAll('.block__form');
-       
+        app.elements.resultBtn = document.querySelector('.calc__result');
+        app.elements.resultPerDay= document.querySelectorAll('.standardResult');
       
         app.startListening();
         
@@ -20,6 +22,12 @@ let app = {
         app.elements.formDays.forEach(element => {
             element.addEventListener('submit', app.handleSetDaysValue);
         });
+
+        app.elements.resultBtn.addEventListener('click', app.handleResultCalc);
+    },
+
+    handleResultCalc: function (event) {
+        console.log('event de demande resultat')
     },
 
 
@@ -43,40 +51,59 @@ let app = {
     },
 
     calcDuration: function (timeObjects) {
-        if (timeObjects[0].value !== "" && timeObjects[1].value !== "") {
-    
-            const startMorning = moment(`${app.moment} ${timeObjects[0].value}`);
-            const endMorning = moment(`${app.moment} ${timeObjects[1].value}`);
+
+        
+        if (timeObjects[4].value === "" && timeObjects[5].value === "") {
             
-            const deltaMorningTime = moment.duration(endMorning.diff(startMorning));
-
-           
-
-            if (timeObjects[2].value !== "" && timeObjects[3].value !== "") {
-                const startAfternoon = moment(`${app.moment} ${timeObjects[2].value}`);
-                const endAfternoon = moment(`${app.moment} ${timeObjects[3].value}`);
-
-                const deltaAfternoonTime = moment.duration(endAfternoon.diff(startAfternoon));
-
-                const deltaDayTotal = deltaMorningTime.add(deltaAfternoonTime);
-
-                return deltaDayTotal;
+            if (timeObjects[0].value !== "" && timeObjects[1].value !== "") {
+        
+                const startMorning = moment(`${app.moment} ${timeObjects[0].value}`);
+                const endMorning = moment(`${app.moment} ${timeObjects[1].value}`);
+                
+                const deltaMorningTime = moment.duration(endMorning.diff(startMorning));
+    
+               
+    
+                if (timeObjects[2].value !== "" && timeObjects[3].value !== "") {
+                    const startAfternoon = moment(`${app.moment} ${timeObjects[2].value}`);
+                    const endAfternoon = moment(`${app.moment} ${timeObjects[3].value}`);
+    
+                    const deltaAfternoonTime = moment.duration(endAfternoon.diff(startAfternoon));
+    
+                    const deltaDayTotal = deltaMorningTime.add(deltaAfternoonTime);
+    
+                    return deltaDayTotal;
+                    
+                }
+    
+                return deltaMorningTime;
+                
+                
+            } else {
+                
+                const startPM = moment(`${app.moment} ${timeObjects[2].value}`);
+                const endPM = moment(`${app.moment} ${timeObjects[3].value}`);
+                
+                const deltaTime = moment.duration(endPM.diff(startPM));
+    
+                return deltaTime
                 
             }
 
-            return deltaMorningTime;
-            
-            
         } else {
             
-            const startPM = moment(`${app.moment} ${timeObjects[2].value}`);
-            const endPM = moment(`${app.moment} ${timeObjects[3].value}`);
-            
-            const deltaTime = moment.duration(endPM.diff(startPM));
+            for (let index = 0; index < 4; index++) {
+                timeObjects[index] = "";
+            }
 
-            return deltaTime
-            
+            const startDay = moment(`${app.moment} ${timeObjects[4].value}`);
+            const endDay = moment(`${app.moment} ${timeObjects[5].value}`);
+
+            const deltaDayTime = moment.duration(endDay.diff(startDay));
+
+            return deltaDayTime;
         }
+
     },
 
     setDayValue: function (inputs) {
