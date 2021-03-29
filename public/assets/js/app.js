@@ -51,18 +51,19 @@ let app = {
     },
 
     calcDuration: function (timeObjects) {
-
         
         if (timeObjects[4].value === "" && timeObjects[5].value === "") {
             
+            timeObjects[4].setAttribute("disabled","");
+            timeObjects[5].setAttribute("disabled","");
+
             if (timeObjects[0].value !== "" && timeObjects[1].value !== "") {
         
                 const startMorning = moment(`${app.moment} ${timeObjects[0].value}`);
                 const endMorning = moment(`${app.moment} ${timeObjects[1].value}`);
                 
                 const deltaMorningTime = moment.duration(endMorning.diff(startMorning));
-    
-               
+            
     
                 if (timeObjects[2].value !== "" && timeObjects[3].value !== "") {
                     const startAfternoon = moment(`${app.moment} ${timeObjects[2].value}`);
@@ -76,8 +77,7 @@ let app = {
                     
                 }
     
-                return deltaMorningTime;
-                
+                return deltaMorningTime;       
                 
             } else {
                 
@@ -91,9 +91,10 @@ let app = {
             }
 
         } else {
-            
+
             for (let index = 0; index < 4; index++) {
                 timeObjects[index] = "";
+                timeObjects[index].setAttribute("disabled", "");
             }
 
             const startDay = moment(`${app.moment} ${timeObjects[4].value}`);
@@ -108,39 +109,10 @@ let app = {
 
     setDayValue: function (inputs) {
         
-        const day = inputs[0].dataset.day;
+        
         const selector = `${inputs[0].dataset.day}__result__standard`;
 
-        switch (day) {
-            case 'monday':
-
-                app.setTimeValueForDay(app.calcDuration(inputs), selector);
-        
-                break;
-            case 'tuesday':
-                app.setTimeValueForDay(app.calcDuration(inputs), selector);
-
-                break;
-            case 'wednesday':
-                app.setTimeValueForDay(app.calcDuration(inputs), selector);
-
-                break;
-            case 'thursday':
-                app.setTimeValueForDay(app.calcDuration(inputs), selector);
-
-                break;
-            case 'friday':
-                app.setTimeValueForDay(app.calcDuration(inputs), selector);
-
-                break;
-            case 'saturday':
-                app.setTimeValueForDay(app.calcDuration(inputs), selector);
-
-                break;
-                
-            default:
-                break;
-        }
+        app.setTimeValueForDay(app.calcDuration(inputs), selector);
     },
 
     setTimeValueForDay: function (detail, selector) {
