@@ -6,8 +6,7 @@ let app = {
 
     hoursInMinutes: 60,
 
-    init: function () {
-        
+    init: function () {      
         console.log('app.init');
         app.elements.formDays = document.querySelectorAll('.block__form');
         app.elements.resultBtn = document.querySelector('.calc__result');
@@ -77,8 +76,7 @@ let app = {
                 timeResult.resultMinutes -= app.hoursInMinutes;
                 timeResult.resultHours++;
             }
-        });
-    
+        });  
         app.writeStandardResult(timeResult);
     },
 
@@ -100,8 +98,7 @@ let app = {
         app.setDayValue(daysInput);
     },
 
-    getAllCurrentInput: function (day) {
-       
+    getAllCurrentInput: function (day) {  
         return document.querySelectorAll('.' + day);
     },
 
@@ -120,16 +117,13 @@ let app = {
         
                 const startMorning = moment(`${app.moment} ${timeObjects[0].value}`);
                 const endMorning = moment(`${app.moment} ${timeObjects[1].value}`);
-                
                 const deltaMorningTime = moment.duration(endMorning.diff(startMorning));
             
     
                 if (timeObjects[2].value !== "" && timeObjects[3].value !== "") {
                     const startAfternoon = moment(`${app.moment} ${timeObjects[2].value}`);
                     const endAfternoon = moment(`${app.moment} ${timeObjects[3].value}`);
-    
                     const deltaAfternoonTime = moment.duration(endAfternoon.diff(startAfternoon));
-    
                     const deltaDayTotal = deltaMorningTime.add(deltaAfternoonTime);
     
                     return deltaDayTotal;    
@@ -140,7 +134,6 @@ let app = {
             } else {
                 const startPM = moment(`${app.moment} ${timeObjects[2].value}`);
                 const endPM = moment(`${app.moment} ${timeObjects[3].value}`);
-                
                 const deltaTime = moment.duration(endPM.diff(startPM));
     
                 return deltaTime     
@@ -154,12 +147,10 @@ let app = {
 
             const startDay = moment(`${app.moment} ${timeObjects[4].value}`);
             const endDay = moment(`${app.moment} ${timeObjects[5].value}`);
-
             const deltaDayTime = moment.duration(endDay.diff(startDay));
 
             return deltaDayTime;
         }
-
     },
 
     setDayValue: function (inputs) {
@@ -169,7 +160,6 @@ let app = {
 
     setTimeValueForDay: function (detail="", selector) {    
         const currentInput = document.getElementById(selector);
-       
         const nextInput = currentInput.parentNode.nextSibling.nextSibling.childNodes[1];
     
         currentInput.value = `${detail._data.hours}h${detail._data.minutes}`;
