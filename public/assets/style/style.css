@@ -54,3 +54,18 @@ th, td {
         color: white;
     }
 }
+@media print {
+    header {
+        display: none;
+    }
+    section {
+        display: none;
+    }
+    .no__printable {
+        display: none;
+        color: transparent;
+        border: transparent;
+        background-color: white;
+    }
+
+}

@@ -15,6 +15,7 @@ let app = {
         app.elements.totalResultInputs = document.querySelectorAll('.total__result');
         app.elements.finalResultInput = document.querySelector('.finalResult');
         app.elements.finalHundredthsResultInput = document.querySelector('.hundredthsResult');
+        app.elements.downloadButton = document.querySelector('.download');
         
         app.startListening();
     },
@@ -29,6 +30,12 @@ let app = {
         })
 
         app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
+
+        app.elements.downloadButton.addEventListener('click', app.handlePrintTable);
+    },
+
+    handlePrintTable: function () {
+       window.print(); 
     },
 
     resetFieldForDay: function (event) {
