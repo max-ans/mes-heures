@@ -1,5 +1,3 @@
-
-
 let app = {
     
     elements: {},
@@ -16,6 +14,8 @@ let app = {
         app.elements.resultForAllDays= document.querySelectorAll('.standardResult');
         app.elements.resetBtn = document.querySelectorAll('.reset');
         app.elements.totalResultInputs = document.querySelectorAll('.total__result');
+        app.elements.finalResultInput = document.querySelector('.finalResult');
+        app.elements.finalHundredthsResultInput = document.querySelector('.hundredthsResult');
         
         app.startListening();
     },
@@ -64,18 +64,31 @@ let app = {
     },
 
     calcTotal: function (dateArray) {
-        let resultHours = 0;
-        let resultMinutes = 0;
-        dateArray.forEach(date => {
-            resultHours += date.hours;
-            resultMinutes += date.minutes;
 
-            while (resultMinutes >= app.hoursInMinutes) {
-                resultMinutes -= app.hoursInMinutes;
-                resultHours++;
+        let timeResult = {
+            resultHours : 0,
+            resultMinutes : 0
+        }
+        dateArray.forEach(date => {
+            timeResult.resultHours += date.hours;
+            timeResult.resultMinutes += date.minutes;
+
+            while (timeResult.resultMinutes >= app.hoursInMinutes) {
+                timeResult.resultMinutes -= app.hoursInMinutes;
+                timeResult.resultHours++;
             }
         });
     
+        app.writeStandardResult(timeResult);
+    },
+
+    writeStandardResult: function (value) {
+        app.elements.finalResultInput.value = `${value.resultHours}h${value.resultMinutes}`;
+        app.writeHundredthsResult(value);
+    },
+
+    writeHundredthsResult: function (value) {
+        app.elements.finalHundredthsResultInput.value = `${value.resultHours}h${app.inHundredths(value.resultMinutes)}`
     },
 
 
