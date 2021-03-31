@@ -4,9 +4,21 @@ namespace App\Controllers;
 
 class HomeController extends MainController
 {
+    private $router;
+
+
+
+    public function __construct($router)
+    {
+        $this->router = $router;
+    }
 
     public function homepage ()
     {
-        $this->render('main/table.tpl.html');
+        $viewDatas = [
+            'router' => $this->router
+        ];
+
+        $this->render('main/table.tpl.html', $viewDatas);
     }
 }
