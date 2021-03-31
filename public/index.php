@@ -13,57 +13,8 @@ if (array_key_exists("BASE_URI" , $_SERVER)) {
     $_SERVER['BASE_URI'] = '/';
 }
 
-// Route Mapping
-
-$router->map(
-    'GET',
-    '/',
-    [
-        'method' => 'homepage',
-        'controller' => '\App\Controller\HomeController',
-    ],
-    'homepage'
-);
-
-$router->map(
-    'GET',
-    '/connexion',
-    [
-        'method' => 'showLoginForm',
-        'controller' => 'App\Controller\LoginController',
-    ],
-    'login'
-);
-
-$router->map(
-    'POST',
-    '/connexion',
-    [
-        'method' => 'sendLoginForm',
-        'controller' => 'App\Controller\LoginController'
-    ],
-    'login-form'
-);
-
-$router->map(
-    'GET',
-    '/deconnexion',
-    [
-        'method' => 'disconnectUser',
-        'controller' => 'App\Controller\LoginController',
-    ],
-    'logout'
-);
-
-$router->map(
-    'GET',
-    '/profil/[a:username]',
-    [
-        'method' => 'userShow',
-        'controller' => 'App\Controller\UserController'
-    ],
-    'profil'
-);
+// import routes
+require_once '../app/Utils/Routes.php';
 
 $match = $router->match();
 
