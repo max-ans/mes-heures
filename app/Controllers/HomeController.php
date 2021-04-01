@@ -7,6 +7,6 @@ class HomeController extends MainController
 
     public function homepage ()
     {
-        $this->render('main/table.tpl.html');
+        $this->render('main/table.tpl.php');
     }
 }

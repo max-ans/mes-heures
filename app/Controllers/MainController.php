@@ -20,9 +20,9 @@ class MainController
 
         extract($viewDatas);
 
-        require_once __DIR__ . '/../templates/partials/_header.tpl.html';
+        require_once __DIR__ . '/../templates/partials/_header.tpl.php';
         require_once __DIR__ . '/../templates/' . $viewName;
-        require_once __DIR__ . '/../templates/partials/_footer.tpl.html';
+        require_once __DIR__ . '/../templates/partials/_footer.tpl.php';
 
     }
 }

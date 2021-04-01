@@ -6,6 +6,6 @@ class ErrorController extends MainController
 {
     public function error () 
     {
-        $this->render('errors/err404.tpl.html');
+        $this->render('errors/err404.tpl.php');
     }
 }
