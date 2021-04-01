@@ -37,6 +37,6 @@ class MainController
 
     public function redirectTo ($routeName)
     {
-        return header("Location: $routeName");
+        return header('Location:'. $this->router->generate($routeName));
     }
 }

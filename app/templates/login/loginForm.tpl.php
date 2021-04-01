@@ -10,7 +10,8 @@
             <label for="password">Mot de passe</label>
             <input type="password" class="form-control shadow-sm" id="password" name="password" required>
         </div>
-       
+        <input type="hidden" name="token" value="<?= $token ?>">
+        
         <button type="submit" class="btn btn-outline-danger btn-block shadow-sm mt-4" style="width: 100%;">Se connecter</button>
     </fieldset>
   </form>
