@@ -26,12 +26,15 @@ class RegistrationController extends MainController
         
 
         $errorsList = [];
-        $passwordValidation = '/
-        ^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8}$
-        /';
+        $passwordValidation = "#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#";
+        $alreadyExist = User::findByEmail($email);
 
         if(empty($token) || $token != $_SESSION['csrfToken']){
             $errorsList[] = "Erreur CSRF !";
+        }
+
+        if ($alreadyExist) {
+            $errorsList[] = "Un compte existe déjà avec cette adresse, veuillez vous connectez";
         }
 
         if ($email === ""){
@@ -71,7 +74,12 @@ class RegistrationController extends MainController
         } else {
             
             $viewDatas = [
-                'errorsList' => $errorsList
+                'errorsList' => $errorsList,
+                'oldValues' => [
+                    'oldToken' => $token,
+                    'oldEmail' => $email,
+                ]
+
             ];
 
             $this->render('registration/registration.tpl.php', $viewDatas);
