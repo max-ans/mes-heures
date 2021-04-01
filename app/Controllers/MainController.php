@@ -5,7 +5,7 @@ namespace App\Controllers;
 class MainController
 {
 
-    private $router;
+    protected $router;
 
     public function __construct($router)
     {
@@ -33,5 +33,10 @@ class MainController
         $_SESSION['csrfToken'] = $token;
 
         return $token;
+    }
+
+    public function redirectTo ($routeName)
+    {
+        return header("Location: $routeName");
     }
 }
