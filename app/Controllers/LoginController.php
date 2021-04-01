@@ -13,4 +13,9 @@ class LoginController extends MainController
     {
         dump($_POST);
     }
+
+    public function disconnectUser () 
+    {
+        dump($_GET);
+    }
 }
