@@ -3,12 +3,12 @@
         <legend>Connexion</legend>
         <div class="form-group mb-3">
             <label for="email">Adresse Email</label>
-            <input type="email" class="form-control shadow-sm" id="email" name="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control shadow-sm" id="email" name="email" aria-describedby="emailHelp" required>
             <small id="emailHelp" class="form-text text-muted">Ne transmettez jamais vos identifiants à quelqu'un d'autre</small>
         </div>
         <div class="form-group mb-3">
             <label for="password">Mot de passe</label>
-            <input type="password" class="form-control shadow-sm" id="password" name="password">
+            <input type="password" class="form-control shadow-sm" id="password" name="password" required>
         </div>
        
         <button type="submit" class="btn btn-outline-danger btn-block shadow-sm mt-4" style="width: 100%;">Se connecter</button>

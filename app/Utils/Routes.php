@@ -36,6 +36,26 @@ $router->map(
 
 $router->map(
     'GET',
+    '/inscription',
+    [
+        'method' => 'showRegistrationForm',
+        'controller' => '\App\Controllers\RegistrationController'
+    ],
+    'registration'
+);
+
+$router->map(
+    'POST',
+    '/inscription',
+    [
+        'method' => 'sendRegistrationForm',
+        'controller' => '\App\Controllers\RegistrationController'
+    ],
+    'registration-form'
+);
+
+$router->map(
+    'GET',
     '/deconnexion',
     [
         'method' => 'disconnectUser',
