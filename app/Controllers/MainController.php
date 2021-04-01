@@ -25,4 +25,13 @@ class MainController
         require_once __DIR__ . '/../templates/partials/_footer.tpl.php';
 
     }
+
+    public function getTokenCsrf () {
+        $bytes = random_bytes(10);
+        $token = bin2hex($bytes);
+
+        $_SESSION['csrfToken'] = $token;
+
+        return $token;
+    }
 }
