@@ -23,14 +23,14 @@
         <legend>Connexion</legend>
         <div class="form-group mb-3">
             <label for="email">Adresse Email</label>
-            <input type="email" class="form-control shadow-sm" id="email" name="email" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control shadow-sm" id="email" name="email" aria-describedby="emailHelp" required value="<?= isset($oldValues) ? $oldValues['oldEmail'] : '' ?>">
             <small id="emailHelp" class="form-text text-muted">Ne transmettez jamais vos identifiants à quelqu'un d'autre</small>
         </div>
         <div class="form-group mb-3">
             <label for="password">Mot de passe</label>
             <input type="password" class="form-control shadow-sm" id="password" name="password" required>
         </div>
-        <input type="hidden" name="token" value="<?= $token ?>">
+        <input type="hidden" name="token" value="<?= isset($oldValues) ? $oldValues['oldToken'] : $token ?>">
         
         <button type="submit" class="btn btn-outline-primary btn-block shadow-sm mt-4" style="width: 100%;">Se connecter</button>
     </fieldset>
