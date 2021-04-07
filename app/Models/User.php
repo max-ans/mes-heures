@@ -15,7 +15,7 @@ class User
 
     
 
-    public function find ($id) 
+    public static function find ($id) 
     {
         $pdo = Database::getPDO();
 
@@ -31,7 +31,7 @@ class User
         return $result;
     }
 
-    public function findByEmail ($email)
+    public static function findByEmail ($email)
     {
         $pdo = Database::getPDO();
 

@@ -6,7 +6,7 @@
   </section>
   <main class="container mt-5">
     <div class="table-responsive">
-      <table class="table table-bordered border-danger align-middle ">
+      <table class="table table-bordered border-primary align-middle ">
         <thead>
           <tr>
             <th scope="col" class="text-center">Jour</th>
@@ -41,10 +41,10 @@
                   min="06:00" max="20:00" name="" id="monday__end">
               </td>
               <td class="d-flex justify-content-between w-100 border-0 m-auto">
-                <button class="calc btn btn-outline-danger d-block no__printable " data-day="monday" type="submit">
+                <button class="calc btn btn-outline-primary d-block no__printable " data-day="monday" type="submit">
                   Calculer
                 </button>
-                <button class="btn btn-outline-danger d-block reset no__printable " data-day="monday" type="button" >
+                <button class="btn btn-outline-primary d-block reset no__printable " data-day="monday" type="button" >
                   <i class="bi bi-trash no__printable" data-day="monday"></i>
                 </button>
                 
@@ -81,10 +81,10 @@
                     min="06:00" max="20:00" name="" id="tueday__end">
                 </td>
               <td class="d-flex justify-content-between w-100 border-0 m-auto">
-                <button class="calc btn btn-outline-danger d-block no__printable " data-day="tuesday" type="submit">
+                <button class="calc btn btn-outline-primary d-block no__printable " data-day="tuesday" type="submit">
                   Calculer
                 </button>
-                <button class="btn btn-outline-danger d-block reset no__printable" data-day="tuesday" type="button">
+                <button class="btn btn-outline-primary d-block reset no__printable" data-day="tuesday" type="button">
                   <i class="bi bi-trash no__printable" data-day="tuesday"></i>
                 </button>
               </td>
@@ -120,10 +120,10 @@
 
               </td>
               <td class="d-flex justify-content-between w-100 border-0 m-auto">
-                <button class="calc btn btn-outline-danger d-block no__printable " data-day="wednesday" type="submit">
+                <button class="calc btn btn-outline-primary d-block no__printable " data-day="wednesday" type="submit">
                   Calculer
                 </button>
-                <button class="btn btn-outline-danger d-block reset no__printable" data-day="wednesday" type="button">
+                <button class="btn btn-outline-primary d-block reset no__printable" data-day="wednesday" type="button">
                   <i class="bi bi-trash no__printable" data-day="wednesday"></i>
                 </button>
               </td>
@@ -160,10 +160,10 @@
               </td>
 
               <td class="d-flex justify-content-between w-100 border-0 m-auto">
-                <button class="calc btn btn-outline-danger d-block no__printable " data-day="thursday" type="submit">
+                <button class="calc btn btn-outline-primary d-block no__printable " data-day="thursday" type="submit">
                   Calculer
                 </button>
-                <button class="btn btn-outline-danger d-block reset no__printable" data-day="thursday" type="button">
+                <button class="btn btn-outline-primary d-block reset no__printable" data-day="thursday" type="button">
                   <i class="bi bi-trash no__printable" data-day="thursday"></i>
                 </button>
               </td>
@@ -199,10 +199,10 @@
 
               </td>
               <td class="d-flex justify-content-between w-100 border-0 m-auto">
-                <button class="calc btn btn-outline-danger d-block no__printable " data-day="friday" type="submit">
+                <button class="calc btn btn-outline-primary d-block no__printable " data-day="friday" type="submit">
                   Calculer
                 </button>
-                <button class="btn btn-outline-danger d-block reset no__printable" data-day="friday" type="button">
+                <button class="btn btn-outline-primary d-block reset no__printable" data-day="friday" type="button">
                   <i class="bi bi-trash no__printable" data-day="friday"></i>
                 </button>
               </td>
@@ -238,10 +238,10 @@
 
               </td>
               <td class="d-flex justify-content-between w-100 border-0 m-auto">
-                <button class=" no__printable calc btn btn-outline-danger d-block " data-day="saturday" type="submit">
+                <button class=" no__printable calc btn btn-outline-primary d-block " data-day="saturday" type="submit">
                   Calculer
                 </button>
-                <button class="no__printable btn btn-outline-danger d-block reset no__printable" data-day="saturday" type="button">
+                <button class="no__printable btn btn-outline-primary d-block reset no__printable" data-day="saturday" type="button">
                   <i class="bi bi-trash no__printable no__printable" data-day="saturday"></i>
                 </button>
               </td>
@@ -257,12 +257,12 @@
           <tr>
             <td colspan="5" class="no__printable"></td>
             <td colspan="2" class="no__printable">
-              <button class="calc__result btn btn-outline-danger d-block m-auto" data-day="hundredthsTime">
+              <button class="calc__result btn btn-outline-primary d-block m-auto" data-day="hundredthsTime">
                 Calculer
               </button>
             </td>
           </tr>
-          <tr class="table-danger mt-3">
+          <tr class="table-primary mt-3">
             <th colspan="5" class="text-end" scope="row">Total</th>
             <td class="text-center"><input readonly type="text" name="" class="total__result text-center result finalResult" id="finalStandardResult"></td>
             <td class="text-center"><input readonly type="text" name="" class="total__result text-center result hundredthsResult" id="finalhundredthsResult"></td>
@@ -273,7 +273,7 @@
     </div>
 
     <section class="print mt-5">
-      <button type="button" class="btn btn-outline-danger btn-lg btn-block download">Imprimer le tableau</button>
+      <button type="button" class="btn btn-outline-primary btn-lg btn-block download">Imprimer le tableau</button>
     </section>
 
   </main>

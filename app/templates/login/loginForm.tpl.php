@@ -1,5 +1,25 @@
 <form action="<?= $router->generate('login-form') ?>" method="POST" class="container mt-5 p-3">
-    <fieldset class="border border-danger p-5 rounded">
+
+<?php
+    if (isset($errorsList)) {
+        foreach ($errorsList as $error ) {
+?>
+    <div class="alert alert-danger" role="alert">
+        <?= $error ?>
+    </div>
+<?php
+    }}
+?>
+<?php
+    if (isset($_SESSION['registerMessage'])) {      
+?>
+    <div class="alert alert-success" role="alert">
+        <?= $_SESSION['registerMessage'] ?>
+    </div>
+<?php
+    }
+?>
+    <fieldset class="border border-primary p-5 rounded">
         <legend>Connexion</legend>
         <div class="form-group mb-3">
             <label for="email">Adresse Email</label>
@@ -12,7 +32,7 @@
         </div>
         <input type="hidden" name="token" value="<?= $token ?>">
         
-        <button type="submit" class="btn btn-outline-danger btn-block shadow-sm mt-4" style="width: 100%;">Se connecter</button>
+        <button type="submit" class="btn btn-outline-primary btn-block shadow-sm mt-4" style="width: 100%;">Se connecter</button>
     </fieldset>
   </form>
   <div class="pusher" style="width: 100%; height: 34.7vh"></div>

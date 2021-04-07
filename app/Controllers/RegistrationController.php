@@ -18,6 +18,7 @@ class RegistrationController extends MainController
 
     public function sendRegistrationForm () {
        
+        $oldEmail = $_POST['email'];
         $email = trim(filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL));
         $password = filter_input(INPUT_POST, 'password');
         $repeatedPassword = filter_input(INPUT_POST, 'repeated__password');
@@ -26,9 +27,12 @@ class RegistrationController extends MainController
         
 
         $errorsList = [];
-        $passwordValidation = '/
-        ^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8}$
-        /';
+        $passwordValidation = '#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#';
+        $alreadyExist = User::findByEmail($email);
+
+        if ($alreadyExist) {
+            $errorsList[] = "Un compte existe déjà avec cette adresse, veuillez vous connecter";
+        }
 
         if(empty($token) || $token != $_SESSION['csrfToken']){
             $errorsList[] = "Erreur CSRF !";
@@ -64,6 +68,8 @@ class RegistrationController extends MainController
 
             if($result) {
                 unset($_SESSION['csrfToken']);
+                $_SESSION['registerMessage'] = 'Votre compte a bien été créé. Vous pouvez désormais vous connecter';
+
                 $this->redirectTo("login");
             } else {
                 $errorsList[] = "Une erreur a eu lieu lors de l'ajout";
@@ -71,7 +77,11 @@ class RegistrationController extends MainController
         } else {
             
             $viewDatas = [
-                'errorsList' => $errorsList
+                'errorsList' => $errorsList,
+                'oldValues'   => [
+                    'oldToken' => $token,
+                    'oldEmail' => $oldEmail,
+                ]
             ];
 
             $this->render('registration/registration.tpl.php', $viewDatas);
