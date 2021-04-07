@@ -66,7 +66,7 @@ $router->map(
 
 $router->map(
     'GET',
-    '/profil/[a:username]',
+    '/profil/[*:nickname]',
     [
         'method' => 'userShow',
         'controller' => '\App\Controllers\UserController'

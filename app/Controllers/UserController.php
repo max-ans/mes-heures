@@ -19,7 +19,7 @@ class UserController extends MainController
         } else {
 
             $this->render('error/err404.tpl.php');
-            
+
         }
     }
 }

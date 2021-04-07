@@ -39,7 +39,7 @@ class LoginController extends MainController
                 // $_SESSION['connectedUser'] = $user;
 
                 
-                dd("tu est connécté");
+                $this->redirectTo('profil', $user->getNickname());
 
             } else {
                 $errorsList[] = "Email ou mot de passe invalide";

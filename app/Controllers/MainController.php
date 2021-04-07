@@ -35,8 +35,11 @@ class MainController
         return $token;
     }
 
-    public function redirectTo ($routeName)
+    public function redirectTo ($routeName, $params = null)
     {
+        if ($params){
+            return header('Location:'. $this->router->generate($routeName, ['nickname' => $params]));
+        }
         return header('Location:'. $this->router->generate($routeName));
     }
 }
