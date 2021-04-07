@@ -53,16 +53,37 @@ class User
         return $result;
     }
 
+    public static function findByNickname ($nickname)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT *
+                FROM `user`
+                WHERE `nickname` = :nickname
+        ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':nickname', $nickname);
+
+        $pdoStatement->execute();
+
+        $result = $pdoStatement->fetchObject(self::class);
+
+        return $result; 
+    }
+
     public function insertNew () 
     {
         $pdo = Database::getPDO();
 
-        $sql = " INSERT INTO `user` (`email`, `password`) VALUES (:email , :password)";
+        $sql = " INSERT INTO `user` (`email`, `password`, `nickname`) VALUES (:email , :password , :nickname)";
 
         $pdoStatement = $pdo->prepare($sql);
 
         $pdoStatement->bindValue(':email', $this->email, PDO::PARAM_STR);
         $pdoStatement->bindValue(':password', $this->password, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':nickname', $this->nickname, PDO::PARAM_STR);
 
         $result = $pdoStatement->execute();
         

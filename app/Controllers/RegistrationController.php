@@ -20,27 +20,31 @@ class RegistrationController extends MainController
        
         $oldEmail = $_POST['email'];
         $email = trim(filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL));
+        $nickname = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password');
         $repeatedPassword = filter_input(INPUT_POST, 'repeated__password');
-        $token = filter_input(INPUT_POST, 'token');
+        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
         $check = filter_input(INPUT_POST, 'check', FILTER_SANITIZE_STRING);
         
-
+        
         $errorsList = [];
         $passwordValidation = '#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#';
-        $alreadyExist = User::findByEmail($email);
+        $alreadyExistEmail = User::findByEmail($email);
+        $alreadyExistNickname = User::findByNickname($nickname);
 
-        if ($alreadyExist) {
+
+        if ($alreadyExistEmail) {
             $errorsList[] = "Un compte existe déjà avec cette adresse, veuillez vous connecter";
+        }
+
+        if ($alreadyExistNickname) {
+            $errorsList[] = "Ce pseudo est déjà utilisé, veuillez en choisir un autre";
         }
 
         if(empty($token) || $token != $_SESSION['csrfToken']){
             $errorsList[] = "Erreur CSRF !";
         }
 
-        if ($alreadyExist) {
-            $errorsList[] = "Un compte existe déjà avec cette adresse, veuillez vous connectez";
-        }
 
         if ($email === ""){
             $errorsList[] = "L'adresse email est invalide";
@@ -67,6 +71,7 @@ class RegistrationController extends MainController
 
             $user->setEmail($email);
             $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            $user->setNickname($nickname);
 
             $result = $user->insertNew();
 
@@ -86,6 +91,7 @@ class RegistrationController extends MainController
                 'oldValues'   => [
                     'oldToken' => $token,
                     'oldEmail' => $oldEmail,
+                    'oldNickname' => $nickname,
                 ]
             ];
 

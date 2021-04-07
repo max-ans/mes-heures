@@ -17,6 +17,10 @@
             <input type="email" class="form-control" id="email" name="email" value="<?= isset($oldValues) ? $oldValues['oldEmail'] : "" ?>" required>
         </div>
         <div class="row-md-4 mt-2">
+            <label for="nickname" class="form-label">Pseudo</label>
+            <input type="text" class="form-control" id="pseudo" name="pseudo" value="<?= isset($oldValues) ? $oldValues['oldNickname'] : "" ?>" required>
+        </div>
+        <div class="row-md-4 mt-2">
             <label for="password" class="form-label">Mot de passe</label>
             <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" required>
             <small id="passwordHelp" class="form-text text-muted">Votre mot de passe doit contenir au minimum huit caractères et vingt au maximum, un caractère spécial, un chiffre et une majuscule. </small>
