@@ -38,6 +38,10 @@ class RegistrationController extends MainController
             $errorsList[] = "Erreur CSRF !";
         }
 
+        if ($alreadyExist) {
+            $errorsList[] = "Un compte existe déjà avec cette adresse, veuillez vous connectez";
+        }
+
         if ($email === ""){
             $errorsList[] = "L'adresse email est invalide";
         }

@@ -19,7 +19,7 @@
         <div class="row-md-4 mt-2">
             <label for="password" class="form-label">Mot de passe</label>
             <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" required>
-            <small id="passwordHelp" class="form-text text-muted">Votre mot de passe doit contenir au minimum huit caractères, un caractère spécial, un chiffre et une majuscule. </small>
+            <small id="passwordHelp" class="form-text text-muted">Votre mot de passe doit contenir au minimum huit caractères et vingt au maximum, un caractère spécial, un chiffre et une majuscule. </small>
         </div>
         <div class="row-md-4 mt-2">
             <label for="repeated__password" class="form-label">Répétez le mot de passe</label>
