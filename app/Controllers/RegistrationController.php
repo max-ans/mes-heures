@@ -72,6 +72,7 @@ class RegistrationController extends MainController
 
             if($result) {
                 unset($_SESSION['csrfToken']);
+                $errorsList = [];
                 $_SESSION['registerMessage'] = 'Votre compte a bien été créé. Vous pouvez désormais vous connecter';
 
                 $this->redirectTo("login");
