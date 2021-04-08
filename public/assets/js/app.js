@@ -29,9 +29,13 @@ let app = {
             element.addEventListener('click', app.resetFieldForDay);
         })
 
-        app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
+        if (app.elements.resultBtn) {
+            app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
+        }
 
-        app.elements.downloadButton.addEventListener('click', app.handlePrintTable);
+        if (app.elements.downloadButton) {
+            app.elements.downloadButton.addEventListener('click', app.handlePrintTable);
+        }
     },
 
     handlePrintTable: function () {
