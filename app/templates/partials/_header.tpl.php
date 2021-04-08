@@ -17,9 +17,6 @@
 
 <body>
   <header>
-  <?php
-    // dump($viewDatas);
-  ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
         <a class="navbar-brand" href="<?= $router->generate('homepage') ?>">Mes Heures</a>
@@ -34,12 +31,27 @@
           </ul>
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <?php
+                if(isset($_SESSION['connectedUser']) && !empty($_SESSION['connectedUser'])) {
+              ?>
+              <li class="nav-item ">
+                <a class="nav-link ml-3" href="<?= $router->generate('logout') ?>">Se déconnecter</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ml-3" href="<?= $router->generate('profil', ['nickname' => $_SESSION['connectedUser']->getNickname()]) ?>">Profil</a>
+              </li>
+              <?php
+                } else {
+              ?>
               <li class="nav-item ">
                 <a class="nav-link ml-3" href="<?= $router->generate('registration') ?>">S'enregister</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="<?= $router->generate('login')?>">Se connecter</a>
               </li>
+              <?php
+                }
+              ?>
             </ul>
           </div>
         </div>

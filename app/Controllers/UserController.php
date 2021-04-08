@@ -7,19 +7,31 @@ use App\Models\User;
 class UserController extends MainController
 {
     public function userShow($nickname)
-    {
-        $user = User::findByNickname($nickname);
+    {        
+        if (isset($_SESSION['connectedUser']) && !empty($_SESSION['connectedUser'])) {
+  
+            $user = User::findByNickname($nickname);
+            
+            if ($user) {
 
-        if ($user) {
+                if($user == $_SESSION['connectedUser']) {
 
-            $viewDatas['user'] = $user;
+                    $viewDatas['user'] = $user;
+        
+                    return $this->render('user/show.tpl.php', $viewDatas);
+                    
+                } else {
+                    
+                    return $this->render('errors/err403.tpl.php');
+                }
 
-            $this->render('user/show.tpl.php', $viewDatas);
-
-        } else {
-
-            $this->render('error/err404.tpl.php');
-
+            } else {
+    
+                return $this->render('errors/err404.tpl.php');
+    
+            }
         }
+
+        return $this->redirectTo('login');
     }
 }

@@ -80,7 +80,7 @@ class RegistrationController extends MainController
                 $errorsList = [];
                 $_SESSION['registerMessage'] = 'Votre compte a bien été créé. Vous pouvez désormais vous connecter';
 
-                $this->redirectTo("login");
+                return $this->redirectTo("login");
             } else {
                 $errorsList[] = "Une erreur a eu lieu lors de l'ajout";
             }
@@ -95,7 +95,7 @@ class RegistrationController extends MainController
                 ]
             ];
 
-            $this->render('registration/registration.tpl.php', $viewDatas);
+            return $this->render('registration/registration.tpl.php', $viewDatas);
         }
     }
     

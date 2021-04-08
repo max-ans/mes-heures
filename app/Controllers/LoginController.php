@@ -9,12 +9,17 @@ class LoginController extends MainController
     public function showLoginForm ()
     {
 
-        $viewDatas = [
-            'token' => $this->getTokenCsrf(),
-        ];
+        if (!isset($_SESSION['connectedUser'])) {
+            $viewDatas = [
+                'token' => $this->getTokenCsrf(),
+            ];
+    
+            
+            return $this->render('login/loginForm.tpl.php', $viewDatas);
+        }
 
-        
-        $this->render('login/loginForm.tpl.php', $viewDatas);
+        return $this->redirectTo('profil', $_SESSION['connectedUser']->getNickname());
+
     }
 
     public function sendLoginForm () 
@@ -34,12 +39,13 @@ class LoginController extends MainController
 
                 // cleaning session and messages
                 unset($_SESSION['registerMessage']);
+                unset($_SESSION['csrfToken']);
                 $errorsList = [];
 
-                // $_SESSION['connectedUser'] = $user;
+                $_SESSION['connectedUser'] = $user;
 
                 
-                $this->redirectTo('profil', $user->getNickname());
+                return $this->redirectTo('profil', $user->getNickname());
 
             } else {
                 $errorsList[] = "Email ou mot de passe invalide";
@@ -52,7 +58,7 @@ class LoginController extends MainController
                     ]
                 ];
     
-                $this->render('login/loginForm.tpl.php', $viewDatas );
+                return $this->render('login/loginForm.tpl.php', $viewDatas );
             }
         } else {
             
@@ -66,12 +72,14 @@ class LoginController extends MainController
                 ]
             ];
 
-            $this->render('login/loginForm.tpl.php', $viewDatas );
+            return $this->render('login/loginForm.tpl.php', $viewDatas );
         }
     }
 
     public function disconnectUser () 
     {
-        dump($_GET);
+        unset($_SESSION['connectedUser']);
+
+        return $this->redirectTo('homepage');
     }
 }
