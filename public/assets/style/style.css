@@ -37,6 +37,18 @@ th, td {
     width: 100%;
 }
 
+.card__table {
+    transition: all 0.3s;
+    box-shadow: 5px 5px 10px rgba(128, 128, 128, 0.603);
+}
+
+.card__table:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.603);
+
+    
+}
+
 @media screen and (min-width: 992px ) {
     .result , 
     .hundred-result,

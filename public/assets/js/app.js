@@ -16,6 +16,9 @@ let app = {
         app.elements.finalResultInput = document.querySelector('.finalResult');
         app.elements.finalHundredthsResultInput = document.querySelector('.hundredthsResult');
         app.elements.downloadButton = document.querySelector('.download');
+        app.elements.cardLinks = document.querySelectorAll('.card-link');
+        app.elements.profilData = document.querySelector('.profil');
+        app.elements.tablesData = document.querySelector('.tables');
         
         app.startListening();
     },
@@ -29,12 +32,36 @@ let app = {
             element.addEventListener('click', app.resetFieldForDay);
         })
 
+        app.elements.cardLinks.forEach(link => {
+            link.addEventListener('click' , app.handleClickLink);
+        })
+
         if (app.elements.resultBtn) {
             app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
         }
 
         if (app.elements.downloadButton) {
             app.elements.downloadButton.addEventListener('click', app.handlePrintTable);
+        }
+    },
+
+    handleClickLink: function (event) {
+        event.preventDefault();
+        app.elements.cardLinks.forEach(link => {
+            link.classList.remove('active');
+        })
+        event.target.classList.add('active');
+
+        switch (event.target.dataset.link) {
+            case 'profil':
+                app.elements.tablesData.classList.add('d-none');
+                app.elements.profilData.classList.remove('d-none');
+                break;
+            case 'tables':
+                app.elements.profilData.classList.add('d-none');
+                app.elements.tablesData.classList.remove('d-none');
+            default:
+                break;
         }
     },
 

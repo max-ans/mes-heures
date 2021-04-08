@@ -4,14 +4,14 @@
 
     <h1>Bonjour <?= $user->getNickname() ?></h1>
 
-    <div class="card text-center border-primary m-4">
+    <div class="card border-primary m-4">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item profil">
-                    <a class="nav-link active" href="#">Profil</a>
+                <li class="nav-item ">
+                    <a class="nav-link card-link active " href="" data-link="profil">Profil</a>
                 </li>
-                <li class="nav-item tables">
-                    <a class="nav-link " href="#">Tableaux</a>
+                <li class="nav-item ">
+                    <a class="nav-link card-link " href="" data-link="tables">Tableaux</a>
                 </li>
             </ul>
         </div>
@@ -25,10 +25,59 @@
             </p>
             <a href="#" class="btn btn-primary">Modifier</a>
         </div>
-        <div class="card-body tables">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card-body tables d-none">
+            <h5 class="card-title">Mes tableaux</h5>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <div class="card m-3 card__table" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 
