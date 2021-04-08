@@ -10,13 +10,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="./assets/style/style.css">
+  <link rel="stylesheet" href="<?= $assetsBaseUri ?>style/style.css">
 
   <title>Mes Heures</title>
 </head>
 
 <body>
   <header>
+  <?php
+    // dump($viewDatas);
+  ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
         <a class="navbar-brand" href="<?= $router->generate('homepage') ?>">Mes Heures</a>
