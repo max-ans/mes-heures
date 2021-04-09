@@ -66,6 +66,26 @@ $router->map(
 
 $router->map(
     'GET',
+    '/profil/modification/[*:nickname]',
+    [
+        'method' => 'showEditForm',
+        'controller' => '\App\Controllers\UserController'
+    ],
+    'profil-edit'
+);
+
+$router->map(
+    'POST',
+    '/profil/modification/[*:nickname]',
+    [
+        'method' => 'sendEditForm',
+        'controller' => '\App\Controllers\UserController'
+    ],
+    'profil-form'
+);
+
+$router->map(
+    'GET',
     '/profil/[*:nickname]',
     [
         'method' => 'userShow',

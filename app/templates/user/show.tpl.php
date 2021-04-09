@@ -23,7 +23,7 @@
             <p class="card-text">
                 <span class="label">Pseudo:</span> <?= $user->getNickname() ?>
             </p>
-            <a href="#" class="btn btn-primary">Modifier</a>
+            <a href="<?= $router->generate('profil-edit', ['nickname' => $user->getNickname()])?>" class="btn btn-primary">Modifier</a>
         </div>
         <div class="card-body tables d-none">
             <h5 class="card-title">Mes tableaux</h5>
