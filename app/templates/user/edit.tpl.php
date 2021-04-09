@@ -31,16 +31,16 @@
             <h4 class="text-center">Mot de passe</h4>
             <div class="row-md-4 mt-2">
                 <label for="old__password" class="form-label">Ancien mot de passe</label>
-                <input type="password" class="form-control" id="old__password" name="old__password" required>
+                <input type="password" class="form-control" id="old__password" name="old__password" >
             </div>
             <div class="row-md-4 mt-2">
                 <label for="password" class="form-label">Nouveau mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" required>
+                <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" >
                 <small id="passwordHelp" class="form-text text-muted">Votre mot de passe doit contenir au minimum huit caractères et vingt au maximum, un caractère spécial, un chiffre et une majuscule. </small>
             </div>
             <div class="row-md-4 mt-2">
                 <label for="repeated__password" class="form-label">Répétez le nouveau mot de passe</label>
-                <input type="password" class="form-control" id="repeated__password" name="repeated__password" required>
+                <input type="password" class="form-control" id="repeated__password" name="repeated__password" >
             </div>
             <input type="hidden" name="token" value="<?= isset($oldValues) ? $oldValues['oldToken'] : $token ?>">
             

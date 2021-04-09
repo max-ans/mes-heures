@@ -47,6 +47,7 @@ class UserController extends MainController
 
                     $viewDatas = [
                         'user' => $user,
+                        'token' => $this->getTokenCsrf()
                     ];
 
                     return $this->render('user/edit.tpl.php', $viewDatas);
@@ -68,6 +69,7 @@ class UserController extends MainController
     }
 
     public function sendEditForm() {
-
+        dump($_POST);
+        dump($_SESSION);
     }
 }
