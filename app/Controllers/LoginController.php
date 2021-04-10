@@ -33,7 +33,15 @@ class LoginController extends MainController
         $errorsList = [];
         $user = User::findByEmail($email);
 
-        if ($user) {
+        if(empty($token) || $token != $_SESSION['csrfToken']){
+            $errorsList[] = "Erreur CSRF !";
+        }
+
+        if(!$user) {
+            $errorsList[] = "Aucun compte connu à cette adresse";
+        };
+
+        if (empty($errorsList)) {
 
             if (password_verify($password, $user->getPassword())){
 
@@ -62,8 +70,6 @@ class LoginController extends MainController
             }
         } else {
             
-            $errorsList[] = "Aucun compte connu à cette adresse";
-
             $viewDatas = [
                 'errorsList' => $errorsList,
                 'oldValues' => [
