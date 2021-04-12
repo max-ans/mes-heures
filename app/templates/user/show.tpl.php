@@ -3,7 +3,7 @@
 <main class="container text-center text-primary mt-5">
 
     <h1>Bonjour <?= $user->getNickname() ?></h1>
-
+    
     <div class="card border-primary m-4">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">

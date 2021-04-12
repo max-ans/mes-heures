@@ -49,6 +49,18 @@ th, td {
     
 }
 
+.update__success {
+    opacity: 0;
+    animation: success 5s;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    max-width: 65%;
+    text-align: center;
+    margin: 0 auto;
+}
+
 @media screen and (min-width: 992px ) {
     .result , 
     .hundred-result,

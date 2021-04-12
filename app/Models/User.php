@@ -97,6 +97,28 @@ class User
 
     }
 
+    public function update ($id)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `user` SET `email` = :email , `password` = :password , `nickname` = :nickname WHERE id = :id ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':password', $this->password, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':nickname', $this->nickname, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':id', $id , PDO::PARAM_INT);
+
+        $result = $pdoStatement->execute();
+
+        if ($result) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * Get the value of password
      */

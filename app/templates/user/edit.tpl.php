@@ -1,10 +1,5 @@
 <div class="container mt-5">
-    <?php
-        // dump($router);
-        // dump($user);
-    ?>
-
-
+  
     <form action="<?= $router->generate('profil-form', [ 'nickname' => $user->getNickname()])?>" method="post">
     <?php
         if (isset($errorsList)) {
@@ -16,16 +11,26 @@
     <?php
         }}
     ?>
+    <?php
+        if (isset($_SESSION['success'])) {
+    ?>
+        <div class="alert alert-success update__success" role="alert">
+            <?= $_SESSION['success'] ?>
+        </div>
+    <?php
+        }
+    ?>
+    
 
         <fieldset class="border border-primary g-3 p-5 rounded">
             <legend class="text-center"><h3>Modification</h3></legend>
             <div class="row-md-4 mt-2">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?= $user->getEmail() ?>" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?= isset($oldValues) ? $oldValues['oldEmail'] : $user->getEmail() ?>" required>
             </div>
             <div class="row-md-4 mt-2">
                 <label for="nickname" class="form-label">Pseudo</label>
-                <input type="text" class="form-control" id="pseudo" name="pseudo" value="<?= $user->getNickname() ?>" required>
+                <input type="text" class="form-control" id="pseudo" name="pseudo" value="<?= isset($oldValues) ? $oldValues['oldNickname'] : $user->getNickname() ?>" required>
             </div>
             <hr class="mt-5 text-primary">
             <h4 class="text-center">Mot de passe</h4>
