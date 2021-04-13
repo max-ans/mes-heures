@@ -276,4 +276,8 @@
       <button type="button" class="btn btn-outline-primary btn-lg btn-block download">Imprimer le tableau</button>
     </section>
 
+    <section class="screen mt-5 mb-5">
+      <button type="button" class="btn btn-outline-primary btn-lg btn-block screenshot">Enregistrer le tableau</button>
+    </section>
+
   </main>

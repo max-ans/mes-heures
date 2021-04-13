@@ -43,3 +43,34 @@
         </div>
     </fieldset>
 </form>
+
+<section class="infos  mb-5 container p-5">
+    <div class="card">
+        <div class="card-header">
+            Tips
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">En créant un compte, je peux :</h5>
+            <p class="card-text">
+            <ul>
+                    <li>
+                        <p>
+                            Accéder à tous les tableaux que j'ai déjà remplis et sauvegarder
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Imprimer en un click le tableau que je viens de remplir
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Ajouter et supprimer autant de tableaux d'heures que je souhaite, sans restriction de quantités
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            
+        </div>
+    </div>
+  </section>

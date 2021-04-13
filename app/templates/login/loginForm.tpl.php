@@ -35,4 +35,45 @@
         <button type="submit" class="btn btn-outline-primary btn-block shadow-sm mt-4" style="width: 100%;">Se connecter</button>
     </fieldset>
   </form>
-  <div class="pusher" style="width: 100%; height: 34.7vh"></div>
+
+  <section class="registerLink container mb-5 text-center">
+    <small class="link__register">Je n'est pas encore de compte! Pas de souci! Créez en un <a href="">ici</a></small>
+  </section>
+
+  <section class="infos mt-5 container mb-5 ">
+    <div class="card">
+        <div class="card-header">
+            Tips
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">En me connectant, je pourrais:</h5>
+            <p class="card-text">
+                <ul>
+                    <li>
+                        <p>
+                            Accéder à tous les tableaux que j'ai déjà remplis et sauvegarder
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Imprimer en un click le tableau que je viens de remplir
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Ajouter et supprimer autant de tableaux d'heures que je souhaite, sans restriction de quantités
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Gerer mes données personnelles
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            
+        </div>
+    </div>
+  </section>
+  
+ 

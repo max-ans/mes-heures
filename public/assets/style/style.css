@@ -25,15 +25,17 @@ th, td {
 }
 
 .footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: #336EFD;
     color: white;
+    opacity: 0.7;
+   
 }
 
-.download {
+.download, .screenshot {
     width: 100%;
 }
 
@@ -61,6 +63,10 @@ th, td {
     margin: 0 auto;
 }
 
+.link__register {
+    color: grey;
+}
+
 @media screen and (min-width: 992px ) {
     .result , 
     .hundred-result,
@@ -70,14 +76,14 @@ th, td {
       
     } 
 
-    .footer {
+    /* .footer {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
         background-color: #336EFD;
         color: white;
-    }
+    } */
 }
 @media print {
     header {
@@ -93,4 +99,15 @@ th, td {
         background-color: white;
     }
 
+}
+
+@media screen and (min-height: 949px) {
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #336EFD;
+        color: white;
+    }
 }
