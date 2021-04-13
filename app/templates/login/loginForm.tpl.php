@@ -37,10 +37,10 @@
   </form>
 
   <section class="registerLink container mb-5 text-center">
-    <small class="link__register">Je n'est pas encore de compte! Pas de souci! Créez en un <a href="">ici</a></small>
+    <small class="link__register">Je n'ai pas encore de compte! Pas de souci! Créez en un <a href="">ici</a></small>
   </section>
 
-  <section class="infos mt-5 container mb-5 ">
+  <section class="info mt-5 container mb-5 ">
     <div class="card">
         <div class="card-header">
             Tips
@@ -67,6 +67,11 @@
                     <li>
                         <p>
                             Gerer mes données personnelles
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Renseigner une semaine pour chaque tableau d'heure
                         </p>
                     </li>
                 </ul>

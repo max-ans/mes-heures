@@ -63,9 +63,11 @@ th, td {
     margin: 0 auto;
 }
 
-.link__register {
+.link__register, .infos {
     color: grey;
+    font-style: italic;
 }
+
 
 @media screen and (min-width: 992px ) {
     .result , 

@@ -6,6 +6,13 @@
   </section>
   <main class="container mt-5">
     <div class="table-responsive">
+      <?php 
+        if(isset($user) && !empty($user)) {
+      ?>
+        <h2>Semaine du: <br> <input type="date">  au <input type="date"></h2>
+      <?php
+        }
+      ?>
       <table class="table table-bordered border-primary align-middle ">
         <thead>
           <tr>
@@ -271,13 +278,17 @@
         </tbody>
       </table>
     </div>
-
-    <section class="print mt-5">
-      <button type="button" class="btn btn-outline-primary btn-lg btn-block download">Imprimer le tableau</button>
+    <section class="print mt-5 user__action " >
+      <button type="button" class="btn btn-outline-primary btn-lg btn-block download ">Imprimer le tableau</button>
     </section>
 
-    <section class="screen mt-5 mb-5">
-      <button type="button" class="btn btn-outline-primary btn-lg btn-block screenshot">Enregistrer le tableau</button>
+    <section class="screen mt-5 mb-5 user__action">
+    <?php if(!isset($user) ) {?>
+      <small class="infos">Vous devez être connecté pour enregistrer un tableau</small>
+    <?php
+    }
+    ?>
+      <button type="button" <?= (isset($user) && !empty($user)) ? '' : 'disabled' ?> class="btn btn-outline-primary btn-lg btn-block screenshot ">Enregistrer le tableau</button>
     </section>
 
   </main>
