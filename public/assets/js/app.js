@@ -8,24 +8,27 @@ let app = {
 
     init: function () {      
         console.log('app.init');
-        app.elements.formDays = document.querySelectorAll('.block__form');
         app.elements.resultBtn = document.querySelector('.calc__result');
         app.elements.resultForAllDays= document.querySelectorAll('.standardResult');
         app.elements.resetBtn = document.querySelectorAll('.reset');
         app.elements.totalResultInputs = document.querySelectorAll('.total__result');
         app.elements.finalResultInput = document.querySelector('.finalResult');
         app.elements.finalHundredthsResultInput = document.querySelector('.hundredthsResult');
-        app.elements.downloadButton = document.querySelector('.download');
+        app.elements.printButton = document.querySelector('.print');
         app.elements.cardLinks = document.querySelectorAll('.card-link');
         app.elements.profilData = document.querySelector('.profil');
         app.elements.tablesData = document.querySelector('.tables');
-        
+        app.elements.tableForm = document.querySelector('.table__form');
+        app.elements.downloadButton = document.querySelector('.download');
+        app.elements.calcBtns = document.querySelectorAll('.calc');
+        console.log(app.elements.tableForm);
+
         app.startListening();
     },
 
     startListening: function () {
-        app.elements.formDays.forEach(element => {
-            element.addEventListener('submit', app.handleSetDaysValue);
+        app.elements.calcBtns.forEach(element => {
+            element.addEventListener('click', app.handleSetDaysValue);
         });
 
         app.elements.resetBtn.forEach(element => {
@@ -40,8 +43,14 @@ let app = {
             app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
         }
 
+        if (app.elements.printButton) {
+            app.elements.printButton.addEventListener('click', app.handlePrintTable);
+        }
+
         if (app.elements.downloadButton) {
-            app.elements.downloadButton.addEventListener('click', app.handlePrintTable);
+            app.elements.downloadButton.addEventListener('click', () => {
+                app.elements.tableForm.submit();
+            })
         }
     },
 

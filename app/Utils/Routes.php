@@ -15,6 +15,16 @@ $router->map(
 );
 
 $router->map(
+    'POST',
+    '/',
+    [
+        'method' => 'homepage',
+        'controller' => '\App\Controllers\HomeController',
+    ],
+    'homepage-test'
+);
+
+$router->map(
     'GET',
     '/connexion',
     [
