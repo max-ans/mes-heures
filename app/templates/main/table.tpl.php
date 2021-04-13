@@ -8,7 +8,6 @@
 <form action="<?= $router->generate('homepage-test') ?>" class="table__form" method="post">
   <div class="table-responsive">
     <?php 
-    dump($_POST);
         if(isset($user) && !empty($user)) {
       ?>
     <h2>Semaine du: <br> <input type="date" name="week__start"> au <input type="date" name="week__end"></h2>
@@ -305,71 +304,6 @@
     <button type="button" <?= (isset($user) && !empty($user)) ? '' : 'disabled' ?>
       class="btn btn-outline-primary btn-lg btn-block download ">Enregistrer le tableau</button>
   </section>
-    <!--
-    <form action="<?= $router->generate("homepage-test")?>" method="post" class="d-none hidden__form">
-    <?php 
-        if(isset($user) && !empty($user)) {
-      ?>
-    <input type="date" name="date__start">  <input type="date" name="date__end"></h2>
-    <?php
-        }
-      ?>
-      <input class="inputs monday" data-day="monday" type="time" min="06:00" max="12:00" name="monday__morning__start" id="hidden__monday__morning__start">
-      <input class="inputs monday" data-day="monday" type="time" min="06:00" max="12:00" name="monday__morning__end" id="hidden__monday__morning__end">
-      <input class="inputs monday" data-day="monday" type="time" min="13:00" max="20:00" name="monday__afternoon__start" id="hidden__monday__afternoon__start">
-      <input class="inputs monday" data-day="monday" type="time" min="13:00" max="20:00" name="monday__afternoon__end" id="hidden__monday__afternoon__end">
-      <input class="inputs monday" data-day="monday" type="time" min="06:00" max="20:00" name="monday__start" id="hidden__monday__start">
-      <input class="inputs monday" data-day="monday" type="time" min="06:00" max="20:00" name="monday__end" id="hidden__monday__end">
-      <input readonly type="text" name="monday__result__standard" class=" standardResult result text-center monday__result " id="hidden__monday__result__standard">
-      <input readonly type="text" name="monday__result__hundredths" class="result text-center monday__result" id="hidden__monday__result__hundredths">
-
-      <input class="inputs tuesday" data-day="tuesday" type="time" min="06:00" max="12:00" name="tuesday__morning__start" id="hidden__tuesday__morning__start">
-      <input class="inputs tuesday" data-day="tuesday" type="time" min="06:00" max="12:00" name="tuesday__morning__end" id="hidden__tuesday__morning__end">
-      <input class="inputs tuesday" data-day="tuesday" type="time" min="13:00" max="20:00" name="tuesday__afternoon__start" id="hidden__tuesday__afternoon__start">
-      <input class="inputs tuesday" data-day="tuesday" type="time" min="13:00" max="20:00" name="tuesday__afternoon__end" id="hidden__tuesday__afternoon__end">
-      <input class="inputs tuesday" data-day="tuesday" type="time" min="06:00" max="20:00" name="tuesday__start" id="hidden__tuesday__start">
-      <input class="inputs tuesday" data-day="tuesday" type="time" min="06:00" max="20:00" name="tuesday__end" id="hidden__tuesday__end">
-      <input readonly type="text" name="tuesday__result__standard" class=" standardResult result text-center tuesday__result " id="hidden__tuesday__result__standard">
-      <input readonly type="text" name="tuesday__result__hundredths" class="result text-center tuesday__result" id="hidden__tuesday__result__hundredths">
-
-      <input class="inputs wednesday" data-day="wednesday" type="time" min="06:00" max="12:00" name="wednesday__morning__start" id="hidden__wednesday__morning__start">
-      <input class="inputs wednesday" data-day="wednesday" type="time" min="06:00" max="12:00" name="wednesday__morning__end" id="hidden__wednesday__morning__end">
-      <input class="inputs wednesday" data-day="wednesday" type="time" min="13:00" max="20:00" name="wednesday__afternoon__start" id="hidden__wednesday__afternoon__start">
-      <input class="inputs wednesday" data-day="wednesday" type="time" min="13:00" max="20:00" name="wednesday__afternoon__end" id="hidden__wednesday__afternoon__end">
-      <input class="inputs wednesday" data-day="wednesday" type="time" min="06:00" max="20:00" name="wednesday__start" id="hidden__wednesday__start">
-      <input class="inputs wednesday" data-day="wednesday" type="time" min="06:00" max="20:00" name="wednesday__end" id="hidden__wednesday__end">
-      <input readonly type="text" name="wednesday__result__standard" class=" standardResult result text-center wednesday__result " id="hidden__wednesday__result__standard">
-      <input readonly type="text" name="wednesday__result__hundredths" class="result text-center wednesday__result" id="hidden__wednesday__result__hundredths">
-
-      <input class="inputs thursday" data-day="thursday" type="time" min="06:00" max="12:00" name="thursday__morning__start" id="hidden__thursday__morning__start">
-      <input class="inputs thursday" data-day="thursday" type="time" min="06:00" max="12:00" name="thursday__morning__end" id="hidden__thursday__morning__end">
-      <input class="inputs thursday" data-day="thursday" type="time" min="13:00" max="20:00" name="thursday__afternoon__start" id="hidden__thursday__afternoon__start">
-      <input class="inputs thursday" data-day="thursday" type="time" min="13:00" max="20:00" name="thursday__afternoon__end" id="hidden__thursday__afternoon__end">
-      <input class="inputs thursday" data-day="thursday" type="time" min="06:00" max="20:00" name="thursday__start" id="hidden__thursday__start">
-      <input class="inputs thursday" data-day="thursday" type="time" min="06:00" max="20:00" name="thursday__end" id="hidden__thursday__end">
-      <input readonly type="text" name="thursday__result__standard" class=" standardResult result text-center thursday__result " id="hidden__thursday__result__standard">
-      <input readonly type="text" name="thursday__result__hundredths" class="result text-center thursday__result" id="hidden__thursday__result__hundredths">
-
-      <input class="inputs friday" data-day="friday" type="time" min="06:00" max="12:00" name="friday__morning__start" id="hidden__friday__morning__start">
-      <input class="inputs friday" data-day="friday" type="time" min="06:00" max="12:00" name="friday__morning__end" id="hidden__friday__morning__end">
-      <input class="inputs friday" data-day="friday" type="time" min="13:00" max="20:00" name="friday__afternoon__start" id="hidden__friday__afternoon__start">
-      <input class="inputs friday" data-day="friday" type="time" min="13:00" max="20:00" name="friday__afternoon__end" id="hidden__friday__afternoon__end">
-      <input class="inputs friday" data-day="friday" type="time" min="06:00" max="20:00" name="friday__start" id="hidden__friday__start">
-      <input class="inputs friday" data-day="friday" type="time" min="06:00" max="20:00" name="friday__end" id="hidden__friday__end">
-      <input readonly type="text" name="friday__result__standard" class=" standardResult result text-center friday__result " id="hidden__friday__result__standard">
-      <input readonly type="text" name="friday__result__hundredths" class="result text-center friday__result" id="hidden__friday__result__hundredths">
-
-      <input class="inputs saturday" data-day="saturday" type="time" min="06:00" max="12:00" name="saturday__morning__start" id="hidden__saturday__morning__start">
-      <input class="inputs saturday" data-day="saturday" type="time" min="06:00" max="12:00" name="saturday__morning__end" id="hidden__saturday__morning__end">
-      <input class="inputs saturday" data-day="saturday" type="time" min="13:00" max="20:00" name="saturday__afternoon__start" id="hidden__saturday__afternoon__start">
-      <input class="inputs saturday" data-day="saturday" type="time" min="13:00" max="20:00" name="saturday__afternoon__end" id="hidden__saturday__afternoon__end">
-      <input class="inputs saturday" data-day="saturday" type="time" min="06:00" max="20:00" name="saturday__start" id="hidden__saturday__start">
-      <input class="inputs saturday" data-day="saturday" type="time" min="06:00" max="20:00" name="saturday__end" id="hidden__saturday__end">
-      <input readonly type="text" name="saturday__result__standard" class=" standardResult result text-center saturday__result " id="hidden__saturday__result__standard">
-      <input readonly type="text" name="saturday__result__hundredths" class="result text-center saturday__result" id="hidden__saturday__result__hundredths">
-    </form>
-    
-      -->
 
 
 </main>
