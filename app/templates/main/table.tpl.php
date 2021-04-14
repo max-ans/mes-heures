@@ -5,9 +5,10 @@
 
 </section>
 <main class="container mt-5">
-<form action="" class="table__form" method="post">
+<form action="<?= $router->generate('homepage-test') ?>" class="table__form" method="post">
   <div class="table-responsive">
     <?php 
+        dump($_POST);
         if(isset($user) && !empty($user)) {
       ?>
     <h2>Semaine du: <br> <input type="date" name="week__start"> au <input type="date" name="week__end"></h2>
