@@ -5,7 +5,7 @@
 
 </section>
 <main class="container mt-5">
-<form action="<?= $router->generate('homepage-test') ?>" class="table__form" method="post">
+<form action="" class="table__form" method="post">
   <div class="table-responsive">
     <?php 
         if(isset($user) && !empty($user)) {
