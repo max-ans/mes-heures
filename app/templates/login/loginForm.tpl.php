@@ -51,7 +51,7 @@
                 <ul>
                     <li>
                         <p>
-                            Accéder à tous les tableaux que j'ai déjà remplis et sauvegarder
+                            Accéder à tous les tableaux que j'ai déjà remplis et sauvegardé
                         </p>
                     </li>
                     <li>

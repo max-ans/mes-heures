@@ -21,7 +21,6 @@ let app = {
         app.elements.tableForm = document.querySelector('.table__form');
         app.elements.downloadButton = document.querySelector('.download');
         app.elements.calcBtns = document.querySelectorAll('.calc');
-        console.log(app.elements.tableForm);
 
         app.startListening();
     },
@@ -48,10 +47,14 @@ let app = {
         }
 
         if (app.elements.downloadButton) {
-            app.elements.downloadButton.addEventListener('click', () => {
-                app.elements.tableForm.submit();
-            })
+            app.elements.downloadButton.addEventListener('click', app.handleSubmitSavedForm);
         }
+    },
+
+    handleSubmitSavedForm: function () {
+        if(window.confirm("Êtes-vous sûr de vouloir sauvegarder ce tableau")) {
+            app.elements.tableForm.submit();
+        } 
     },
 
     handleClickLink: function (event) {
