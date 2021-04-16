@@ -9,6 +9,7 @@
   <div class="table-responsive">
     <?php 
         dump($_POST);
+        dump($_SESSION);
         if(isset($user) && !empty($user)) {
       ?>
     <h2>Semaine du: <br> <input type="date" name="week__start"> au <input type="date" name="week__end"></h2>

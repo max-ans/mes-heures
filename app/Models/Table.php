@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Utils\Database;
+
 class Table 
 {
 
@@ -111,7 +113,21 @@ class Table
 
     private $finalHundredthsResult;
 
+    public static function find ($id) 
+    {
+        $pdo = Database::getPDO();
 
+        $sql = "SELECT *
+               FROM `table`
+               WHERE $id
+        ";
+
+        $pdoStatement = $pdo->query($sql);
+
+        $result = $pdoStatement->fetchObject(self::class);
+
+        return $result;
+    }
    
 
     /**

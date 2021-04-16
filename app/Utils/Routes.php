@@ -103,3 +103,23 @@ $router->map(
     ],
     'profil'
 );
+
+$router->map(
+    'GET',
+    '/tableau/[i:id]',
+    [
+        'method' => 'tableShow',
+        'controller' => '\App\Controllers\TableController'
+    ],
+    'table-single'
+);
+
+$router->map(
+    'POST',
+    '/tableau',
+    [
+        'method' => 'tablePost',
+        'controller' => '\App\Controllers\TableController'
+    ],
+    'table-post'
+);
