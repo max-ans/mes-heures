@@ -8,13 +8,22 @@
 <form action="<?= $router->generate('table-post') ?>" class="table__form" method="post">
   <div class="table-responsive">
     <?php 
-        dump($_SESSION);
         if(isset($user) && !empty($user)) {
       ?>
     <h2>Semaine du: <br> <input type="date" name="week__start"> au <input type="date" name="week__end"></h2>
     <?php
         }
       ?>
+    <?php
+        if (isset($errorsList)) {
+            foreach ($errorsList as $error ) {
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $error ?>
+        </div>
+    <?php
+        }}
+    ?>
      
     <table class="table table-bordered border-primary align-middle ">
       <thead>
@@ -290,6 +299,7 @@
         
       </tbody>
     </table>
+    <input type="hidden" name="token" value="<?=$token?>">
     </form>
   </div>
   <section class="printing mt-5 user__action ">

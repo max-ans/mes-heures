@@ -3,6 +3,16 @@
 <main class="container text-center text-primary mt-5">
 
     <h1>Bonjour <?= $user->getNickname() ?></h1>
+
+    <?php
+        if (isset($_SESSION['tableSuccess'])) {
+    ?>
+        <div class="alert alert-success update__success" role="alert">
+            <?= $_SESSION['tableSuccess'] ?>
+        </div>
+    <?php
+        }
+    ?>
     
     <div class="card border-primary m-4">
         <div class="card-header">

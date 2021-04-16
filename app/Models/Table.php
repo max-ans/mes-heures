@@ -136,7 +136,7 @@ class Table
     {
         $pdo = Database::getPDO();
 
-        $sql = " INSERT INTO `table` (`weekStart`, `weekEnd`, `mondayMorningStart`, `mondayMorningEnd`, `mondayAfternoonStart`, `mondayAfternoonEnd`, `mondayStart`, `mondayEnd`, `mondayResultStandard`, `mondayResultHundredths`, `tuesdayMorningStart`, `tuesdayMorningEnd`, `tuesdayAfternoonStart`, `tuesdayAfternoonEnd`, `tuesdayStart`, `tuesdayEnd`, `tuesdayResultStandard`, `tuesdayResultHundredths`, `wednesdayMorningStart`, `wednesdayMorningEnd`, `wednesdayAfternoonStart`, `wednesdayAfternoonEnd`, `wednesdayStart`, `wednesdayEnd`, `wednesdayResultStandard`, `wednesdayResultHundredths`, `thursdayMorningStart`, `thursdayMorningEnd`, `thursdayAfternoonStart`, `thursdayAfternoonEnd`, `thursdayStart`, `thursdayEnd`, `thursdayResultStandard`, `thursdayResultHundredths`, `fridayMorningStart`, `fridayMorningEnd`, `fridayAfternoonStart`, `fridayAfternoonEnd`, `fridayStart`, `fridayEnd`, `fridayResultStandard`, `fridayResultHundredths`, `saturdayMorningStart`, `saturdayMorningEnd`, `saturdayAfternoonStart`, `saturdayAfternoonEnd`, `saturdayStart`, `saturdayEnd`, `saturdayResultStandard`, `saturdayResultHundredths`, `finalStandardResult`, `finalHundredthsResult`, `user_id`) VALUES ( :weekStart, :weekEnd , :mondayMorningStart ,:mondayMorningEnd ,:mondayAfternoonStart ,:mondayAfternoonEnd ,:mondayStart ,:mondayEnd ,:mondayResultStandard ,:mondayResultHundredths ,:tuesdayMorningStart ,:tuesdayMorningEnd ,:tuesdayAfternoonStart ,:tuesdayAfternoonEnd ,:tuesdayStart ,:tuesdayEnd ,:tuesdayResultStandard ,:tuesdayResultHundredths ,:wednesdayMorningStart ,:wednesdayMorningEnd ,:wednesdayAfternoonStart ,:wednesdayAfternoonEnd ,:wednesdayStart ,:wednesdayEnd ,:wednesdayResultStandard ,:wednesdayResultHundredths ,:thursdayMorningStart ,:thursdayMorningEnd ,:thursdayAfternoonStart ,:thursdayAfternoonEnd ,:thursdayStart ,:thursdayEnd ,:thursdayResultStandard ,:thursdayResultHundredths ,:fridayMorningStart ,:fridayMorningEnd ,:fridayAfternoonStart ,:fridayAfternoonEnd ,:fridayStart ,:fridayEnd ,:fridayResultStandard ,:fridayResultHundredths ,:saturdayMorningStart ,:saturdayMorningEnd ,:saturdayAfternoonStart ,:saturdayAfternoonEnd ,:saturdayStart ,:saturdayEnd ,:saturdayResultStandard  ,:saturdayResultHundredths ,:finalStandardResult ,:finalHundredthsResult , :user_id)";
+        $sql = " INSERT INTO `table` (`week_start`, `week_end`, `monday_morning_start`, `monday_morning_end`, `monday_afternoon_start`, `monday_afternoon_end`, `monday_start`, `monday_end`, `monday_result_standard`, `monday_result_hundredths`, `tuesday_morning_start`, `tuesday_morning_end`, `tuesday_afternoon_start`, `tuesday_afternoon_end`, `tuesday_start`, `tuesday_end`, `tuesday_result_standard`, `tuesday_result_hundredths`, `wednesday_morning_start`, `wednesday_morning_end`, `wednesday_afternoon_start`, `wednesday_afternoon_end`, `wednesday_start`, `wednesday_end`, `wednesday_result_standard`, `wednesday_result_hundredths`, `thursday_morning_start`, `thursday_morning_end`, `thursday_afternoon_start`, `thursday_afternoon_end`, `thursday_start`, `thursday_end`, `thursday_result_standard`, `thursday_result_hundredths`, `friday_morning_start`, `friday_morning_end`, `friday_afternoon_start`, `friday_afternoon_end`, `friday_start`, `friday_end`, `friday_result_standard`, `friday_result_hundredths`, `saturday_morning_start`, `saturday_morning_end`, `saturday_afternoon_start`, `saturday_afternoon_end`, `saturday_start`, `saturday_end`, `saturday_result_standard`, `saturday_result_hundredths`, `final_standard_result`, `final_hundredths_result`, `user_id`) VALUES ( :weekStart, :weekEnd , :mondayMorningStart ,:mondayMorningEnd ,:mondayAfternoonStart ,:mondayAfternoonEnd ,:mondayStart ,:mondayEnd ,:mondayResultStandard ,:mondayResultHundredths ,:tuesdayMorningStart ,:tuesdayMorningEnd ,:tuesdayAfternoonStart ,:tuesdayAfternoonEnd ,:tuesdayStart ,:tuesdayEnd ,:tuesdayResultStandard ,:tuesdayResultHundredths ,:wednesdayMorningStart ,:wednesdayMorningEnd ,:wednesdayAfternoonStart ,:wednesdayAfternoonEnd ,:wednesdayStart ,:wednesdayEnd ,:wednesdayResultStandard ,:wednesdayResultHundredths ,:thursdayMorningStart ,:thursdayMorningEnd ,:thursdayAfternoonStart ,:thursdayAfternoonEnd ,:thursdayStart ,:thursdayEnd ,:thursdayResultStandard ,:thursdayResultHundredths ,:fridayMorningStart ,:fridayMorningEnd ,:fridayAfternoonStart ,:fridayAfternoonEnd ,:fridayStart ,:fridayEnd ,:fridayResultStandard ,:fridayResultHundredths ,:saturdayMorningStart ,:saturdayMorningEnd ,:saturdayAfternoonStart ,:saturdayAfternoonEnd ,:saturdayStart ,:saturdayEnd ,:saturdayResultStandard  ,:saturdayResultHundredths ,:finalStandardResult ,:finalHundredthsResult , :user_id)";
 
         $pdoStatement = $pdo->prepare($sql);
 
@@ -193,7 +193,6 @@ class Table
         $pdoStatement->bindValue(':finalStandardResult', $this->finalStandardResult, PDO::PARAM_STR);
         $pdoStatement->bindValue(':finalHundredthsResult', $this->finalHundredthsResult, PDO::PARAM_STR);
         $pdoStatement->bindValue(':user_id', $this->userId, PDO::PARAM_INT);
-        
 
         $result = $pdoStatement->execute();
         
@@ -1264,6 +1263,26 @@ class Table
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userId
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set the value of userId
+     *
+     * @return  self
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
 
         return $this;
     }

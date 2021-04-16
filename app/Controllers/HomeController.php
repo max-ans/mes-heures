@@ -8,7 +8,9 @@ class HomeController extends MainController
     public function homepage ()
     {
 
-        $viewDatas = [];
+        $viewDatas = [
+            'token' => $this->getTokenCsrf(),
+        ];
 
         if (isset($_SESSION['connectedUser']) && !empty($_SESSION['connectedUser'])) {
             $viewDatas['user'] = $_SESSION['connectedUser'];
