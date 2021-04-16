@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use PDO;
 use App\Utils\Database;
 
 class Table 
@@ -113,6 +114,8 @@ class Table
 
     private $finalHundredthsResult;
 
+    private $userId;
+
     public static function find ($id) 
     {
         $pdo = Database::getPDO();
@@ -127,6 +130,81 @@ class Table
         $result = $pdoStatement->fetchObject(self::class);
 
         return $result;
+    }
+
+    public function insertNew () 
+    {
+        $pdo = Database::getPDO();
+
+        $sql = " INSERT INTO `table` (`weekStart`, `weekEnd`, `mondayMorningStart`, `mondayMorningEnd`, `mondayAfternoonStart`, `mondayAfternoonEnd`, `mondayStart`, `mondayEnd`, `mondayResultStandard`, `mondayResultHundredths`, `tuesdayMorningStart`, `tuesdayMorningEnd`, `tuesdayAfternoonStart`, `tuesdayAfternoonEnd`, `tuesdayStart`, `tuesdayEnd`, `tuesdayResultStandard`, `tuesdayResultHundredths`, `wednesdayMorningStart`, `wednesdayMorningEnd`, `wednesdayAfternoonStart`, `wednesdayAfternoonEnd`, `wednesdayStart`, `wednesdayEnd`, `wednesdayResultStandard`, `wednesdayResultHundredths`, `thursdayMorningStart`, `thursdayMorningEnd`, `thursdayAfternoonStart`, `thursdayAfternoonEnd`, `thursdayStart`, `thursdayEnd`, `thursdayResultStandard`, `thursdayResultHundredths`, `fridayMorningStart`, `fridayMorningEnd`, `fridayAfternoonStart`, `fridayAfternoonEnd`, `fridayStart`, `fridayEnd`, `fridayResultStandard`, `fridayResultHundredths`, `saturdayMorningStart`, `saturdayMorningEnd`, `saturdayAfternoonStart`, `saturdayAfternoonEnd`, `saturdayStart`, `saturdayEnd`, `saturdayResultStandard`, `saturdayResultHundredths`, `finalStandardResult`, `finalHundredthsResult`, `user_id`) VALUES ( :weekStart, :weekEnd , :mondayMorningStart ,:mondayMorningEnd ,:mondayAfternoonStart ,:mondayAfternoonEnd ,:mondayStart ,:mondayEnd ,:mondayResultStandard ,:mondayResultHundredths ,:tuesdayMorningStart ,:tuesdayMorningEnd ,:tuesdayAfternoonStart ,:tuesdayAfternoonEnd ,:tuesdayStart ,:tuesdayEnd ,:tuesdayResultStandard ,:tuesdayResultHundredths ,:wednesdayMorningStart ,:wednesdayMorningEnd ,:wednesdayAfternoonStart ,:wednesdayAfternoonEnd ,:wednesdayStart ,:wednesdayEnd ,:wednesdayResultStandard ,:wednesdayResultHundredths ,:thursdayMorningStart ,:thursdayMorningEnd ,:thursdayAfternoonStart ,:thursdayAfternoonEnd ,:thursdayStart ,:thursdayEnd ,:thursdayResultStandard ,:thursdayResultHundredths ,:fridayMorningStart ,:fridayMorningEnd ,:fridayAfternoonStart ,:fridayAfternoonEnd ,:fridayStart ,:fridayEnd ,:fridayResultStandard ,:fridayResultHundredths ,:saturdayMorningStart ,:saturdayMorningEnd ,:saturdayAfternoonStart ,:saturdayAfternoonEnd ,:saturdayStart ,:saturdayEnd ,:saturdayResultStandard  ,:saturdayResultHundredths ,:finalStandardResult ,:finalHundredthsResult , :user_id)";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':weekStart', $this->weekStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':weekEnd', $this->weekEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayMorningStart', $this->mondayMorningStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayMorningEnd', $this->mondayMorningEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayAfternoonStart', $this->mondayAfternoonStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayAfternoonEnd', $this->mondayAfternoonEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayStart', $this->mondayStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayEnd', $this->mondayEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayResultStandard', $this->mondayResultStandard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayResultHundredths', $this->mondayResultHundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayMorningStart', $this->tuesdayMorningStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayMorningEnd', $this->tuesdayMorningEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayAfternoonStart', $this->tuesdayAfternoonStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayAfternoonEnd', $this->tuesdayAfternoonEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayStart', $this->tuesdayStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayEnd', $this->tuesdayEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayResultStandard', $this->tuesdayResultStandard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayResultHundredths', $this->tuesdayResultHundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayMorningStart', $this->wednesdayMorningStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayMorningEnd', $this->wednesdayMorningEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayAfternoonStart', $this->wednesdayAfternoonStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayAfternoonEnd', $this->wednesdayAfternoonEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayStart', $this->wednesdayStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayEnd', $this->wednesdayEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayResultStandard', $this->wednesdayResultStandard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayResultHundredths', $this->wednesdayResultHundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayMorningStart', $this->thursdayMorningStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayMorningEnd', $this->thursdayMorningEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayAfternoonStart', $this->thursdayAfternoonStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayAfternoonEnd', $this->thursdayAfternoonEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayStart', $this->thursdayStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayEnd', $this->thursdayEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayResultStandard', $this->thursdayResultStandard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayResultHundredths', $this->thursdayResultHundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayMorningStart', $this->fridayMorningStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayMorningEnd', $this->fridayMorningEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayAfternoonStart', $this->fridayAfternoonStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayAfternoonEnd', $this->fridayAfternoonEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayStart', $this->fridayStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayEnd', $this->fridayEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayResultStandard', $this->fridayResultStandard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayResultHundredths', $this->fridayResultHundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayMorningStart', $this->saturdayMorningStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayMorningEnd', $this->saturdayMorningEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayAfternoonStart', $this->saturdayAfternoonStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayAfternoonEnd', $this->saturdayAfternoonEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayStart', $this->saturdayStart, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayEnd', $this->saturdayEnd, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayResultStandard', $this->saturdayResultStandard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayResultHundredths', $this->saturdayResultHundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':finalStandardResult', $this->finalStandardResult, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':finalHundredthsResult', $this->finalHundredthsResult, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':user_id', $this->userId, PDO::PARAM_INT);
+        
+
+        $result = $pdoStatement->execute();
+        
+        if ($result) {
+            $this->id = $pdo->lastInsertId();
+
+            return true;
+        }
+
+        return false;
+
     }
    
 
