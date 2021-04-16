@@ -8,6 +8,8 @@ class HomeController extends MainController
     public function homepage ()
     {
 
+        unset($_SESSION['tableSuccess']);
+
         $viewDatas = [
             'token' => $this->getTokenCsrf(),
         ];
