@@ -51,6 +51,7 @@
             
             <div class="col-12 mt-5">
                 <button style="width: 100%;" type="submit" class="btn btn-outline-primary btn-block">Valider</button>
+                <a  href="<?= $router->generate('profil', ['nickname' => $user->getNickname()]) ?>" style="width: 100%;" type="button" class="btn btn-outline-warning btn-block mt-4">Annuler</a>
             </div>
         </fieldset>
         

@@ -90,6 +90,9 @@
             
         </div>
     </div>
+    <div class="d-flex m-4">
+        <a href="<?= $router->generate('homepage') ?>" style="width: 100%;"  class="btn btn-outline-primary btn-block">Créer un tableau</a>
+    </div>
 
 </main>
 
