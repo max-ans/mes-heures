@@ -2,9 +2,20 @@
 
 
   <div class="table-responsive">
-    <h2>Semaine du: <br> 
-        <span class="fw-bold"> <?= date_format(date_create($table->getWeekStart()), "d.m.Y") ?></span> au <span class="fw-bold"> <?= date_format(date_create($table->getWeekEnd()), "d.m.Y") ?></span>
-    </h2>
+  <?php
+    // dump($_SERVER);
+  ?>
+    <div class="table__header d-flex justify-content-between">
+        <h2>Semaine du: <br> 
+            <span class="fw-bold"> <?= date_format(date_create($table->getWeekStart()), "d.m.Y") ?></span> au <span class="fw-bold"> <?= date_format(date_create($table->getWeekEnd()), "d.m.Y") ?></span>
+        </h2>
+
+        <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="d-block">
+        <button class="btn btn-outline-primary no__printable" data-bs-toggle="tooltip" data-bs-placement="top" title="Revenir à mes tableaux ">
+            <i class="bi bi-arrow-return-left no__printable"></i>
+        </button>
+        </a>
+    </div>
     
      
     <table class="table table-bordered border-primary align-middle ">
