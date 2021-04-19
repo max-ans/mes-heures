@@ -53,7 +53,7 @@
                                 <span class="fw-bold">
                                     <?= empty($table->getWeekStart()) ? 
                                     '(date non définie)' :
-                                    date_format(date_create($table->getWeekStart()), "d M Y") ?> 
+                                    date_format(date_create($table->getWeekStart()), "d.m.Y") ?> 
                                 </span>
                                 <br>
                                 au
@@ -61,7 +61,7 @@
                                 <span class="fw-bold">
                                     <?= empty($table->getWeekEnd()) ?
                                     '(date non définie)' :
-                                    date_format(date_create($table->getWeekEnd()), "d M Y")?>
+                                    date_format(date_create($table->getWeekEnd()), "d.m.Y")?>
                                 </span>
                             </p>
                         </div>

@@ -67,6 +67,10 @@ th, td {
     color: grey;
     font-style: italic;
 }
+.empty {
+    background-color: #CFE2FF !important;
+    height: 4em;
+}
 
 
 @media screen and (min-width: 992px ) {

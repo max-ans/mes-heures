@@ -173,7 +173,7 @@ class Table
         $pdoStatement->bindValue(':tuesdayMorningStart', $this->tuesday_morning_start, PDO::PARAM_STR);
         $pdoStatement->bindValue(':tuesdayMorningEnd', $this->tuesday_morning_end, PDO::PARAM_STR);
         $pdoStatement->bindValue(':tuesdayAfternoonStart', $this->tuesday_afternoon_start, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayAfternoonEnd', $this->tuesda_afternoon_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayAfternoonEnd', $this->tuesday_afternoon_end, PDO::PARAM_STR);
         $pdoStatement->bindValue(':tuesdayStart', $this->tuesday_start, PDO::PARAM_STR);
         $pdoStatement->bindValue(':tuesdayEnd', $this->tuesday_end, PDO::PARAM_STR);
         $pdoStatement->bindValue(':tuesdayResultStandard', $this->tuesday_result_standard, PDO::PARAM_STR);
