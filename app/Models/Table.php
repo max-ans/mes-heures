@@ -10,109 +10,109 @@ class Table
 
     private $id;
 
-    private $weekStart;
+    private $week_start;
 
-    private $weekEnd;
+    private $week_end;
 
-    private $mondayMorningStart;
+    private $monday_morning_start;
 
-    private $mondayMorningEnd;
+    private $monday_morning_end;
 
-    private $mondayAfternoonStart;
+    private $monday_afternoon_start;
 
-    private $mondayAfternoonEnd;
+    private $monday_afternoon_end;
 
-    private $mondayStart;
+    private $monday_start;
 
-    private $mondayEnd;
+    private $monday_end;
 
-    private $mondayResultStandard;
+    private $monday_result_standard;
 
-    private $mondayResultHundredths;
+    private $monday_result_hundredths;
 
-    private $tuesdayMorningStart;
+    private $tuesday_morning_start;
 
-    private $tuesdayMorningEnd;
+    private $tuesday_morning_end;
 
-    private $tuesdayAfternoonStart;
+    private $tuesday_afternoon_start;
 
-    private $tuesdayAfternoonEnd;
+    private $tuesday_afternoon_end;
 
-    private $tuesdayStart;
+    private $tuesday_start;
 
-    private $tuesdayEnd;
+    private $tuesday_end;
     
-    private $tuesdayResultStandard;
+    private $tuesday_result_standard;
 
-    private $tuesdayResultHundredths;
+    private $tuesday_result_hundredths;
 
-    private $wednesdayMorningStart;
+    private $wednesday_morning_start;
 
-    private $wednesdayMorningEnd;
+    private $wednesday_morning_end;
 
-    private $wednesdayAfternoonStart;
+    private $wednesday_afternoon_start;
 
-    private $wednesdayAfternoonEnd;
+    private $wednesday_afternoon_end;
 
-    private $wednesdayStart;
+    private $wednesday_start;
 
-    private $wednesdayEnd;
+    private $wednesday_end;
     
-    private $wednesdayResultStandard;
+    private $wednesday_result_standard;
 
-    private $wednesdayResultHundredths;
+    private $wednesday_result_hundredths;
 
-    private $thursdayMorningStart;
+    private $thursday_morning_start;
 
-    private $thursdayMorningEnd;
+    private $thursday_morning_end;
 
-    private $thursdayAfternoonStart;
+    private $thursday_afternoon_start;
 
-    private $thursdayAfternoonEnd;
+    private $thursday_afternoon_end;
 
-    private $thursdayStart;
+    private $thursday_start;
 
-    private $thursdayEnd;
+    private $thursday_end;
     
-    private $thursdayResultStandard;
+    private $thursday_result_standard;
 
-    private $thursdayResultHundredths;
+    private $thursday_result_hundredths;
 
-    private $fridayMorningStart;
+    private $friday_morning_start;
 
-    private $fridayMorningEnd;
+    private $friday_morning_end;
 
-    private $fridayAfternoonStart;
+    private $friday_afternoon_start;
 
-    private $fridayAfternoonEnd;
+    private $friday_afternoon_end;
 
-    private $fridayStart;
+    private $friday_start;
 
-    private $fridayEnd;
+    private $friday_end;
     
-    private $fridayResultStandard;
+    private $friday_result_standard;
 
-    private $fridayResultHundredths;
+    private $friday_result_hundredths;
 
-    private $saturdayMorningStart;
+    private $saturday_morning_start;
 
-    private $saturdayMorningEnd;
+    private $saturday_morning_end;
 
-    private $saturdayAfternoonStart;
+    private $saturday_afternoon_start;
 
-    private $saturdayAfternoonEnd;
+    private $saturday_afternoon_end;
 
-    private $saturdayStart;
+    private $saturday_start;
 
-    private $saturdayEnd;
+    private $saturday_end;
     
-    private $saturdayResultStandard;
+    private $saturday_result_standard;
 
-    private $saturdayResultHundredths;
+    private $saturday_result_hundredths;
 
-    private $finalStandardResult;
+    private $final_standard_result;
 
-    private $finalHundredthsResult;
+    private $final_hundredths_result;
 
     private $userId;
 
@@ -132,6 +132,26 @@ class Table
         return $result;
     }
 
+    public static function findAllByUserId ($id)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT *
+                FROM `table`
+                WHERE user_id = :id 
+        ";
+
+        $pdoStatement= $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $pdoStatement->execute();
+
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'App\Models\Table');
+
+        return $result;
+    }
+
     public function insertNew () 
     {
         $pdo = Database::getPDO();
@@ -140,61 +160,62 @@ class Table
 
         $pdoStatement = $pdo->prepare($sql);
 
-        $pdoStatement->bindValue(':weekStart', $this->weekStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':weekEnd', $this->weekEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayMorningStart', $this->mondayMorningStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayMorningEnd', $this->mondayMorningEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayAfternoonStart', $this->mondayAfternoonStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayAfternoonEnd', $this->mondayAfternoonEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayStart', $this->mondayStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayEnd', $this->mondayEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayResultStandard', $this->mondayResultStandard, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':mondayResultHundredths', $this->mondayResultHundredths, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayMorningStart', $this->tuesdayMorningStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayMorningEnd', $this->tuesdayMorningEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayAfternoonStart', $this->tuesdayAfternoonStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayAfternoonEnd', $this->tuesdayAfternoonEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayStart', $this->tuesdayStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayEnd', $this->tuesdayEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayResultStandard', $this->tuesdayResultStandard, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tuesdayResultHundredths', $this->tuesdayResultHundredths, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayMorningStart', $this->wednesdayMorningStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayMorningEnd', $this->wednesdayMorningEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayAfternoonStart', $this->wednesdayAfternoonStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayAfternoonEnd', $this->wednesdayAfternoonEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayStart', $this->wednesdayStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayEnd', $this->wednesdayEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayResultStandard', $this->wednesdayResultStandard, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':wednesdayResultHundredths', $this->wednesdayResultHundredths, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayMorningStart', $this->thursdayMorningStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayMorningEnd', $this->thursdayMorningEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayAfternoonStart', $this->thursdayAfternoonStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayAfternoonEnd', $this->thursdayAfternoonEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayStart', $this->thursdayStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayEnd', $this->thursdayEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayResultStandard', $this->thursdayResultStandard, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':thursdayResultHundredths', $this->thursdayResultHundredths, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayMorningStart', $this->fridayMorningStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayMorningEnd', $this->fridayMorningEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayAfternoonStart', $this->fridayAfternoonStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayAfternoonEnd', $this->fridayAfternoonEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayStart', $this->fridayStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayEnd', $this->fridayEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayResultStandard', $this->fridayResultStandard, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':fridayResultHundredths', $this->fridayResultHundredths, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayMorningStart', $this->saturdayMorningStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayMorningEnd', $this->saturdayMorningEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayAfternoonStart', $this->saturdayAfternoonStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayAfternoonEnd', $this->saturdayAfternoonEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayStart', $this->saturdayStart, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayEnd', $this->saturdayEnd, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayResultStandard', $this->saturdayResultStandard, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':saturdayResultHundredths', $this->saturdayResultHundredths, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':finalStandardResult', $this->finalStandardResult, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':finalHundredthsResult', $this->finalHundredthsResult, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':weekStart', $this->week_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':weekEnd', $this->week_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayMorningStart', $this->monday_morning_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayMorningEnd', $this->monday_morning_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayAfternoonStart', $this->monday_afternoon_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayAfternoonEnd', $this->monday_afternoon_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayStart', $this->monday_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayEnd', $this->monday_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayResultStandard', $this->monday_result_standard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':mondayResultHundredths', $this->monday_result_hundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayMorningStart', $this->tuesday_morning_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayMorningEnd', $this->tuesday_morning_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayAfternoonStart', $this->tuesday_afternoon_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayAfternoonEnd', $this->tuesda_afternoon_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayStart', $this->tuesday_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayEnd', $this->tuesday_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayResultStandard', $this->tuesday_result_standard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tuesdayResultHundredths', $this->tuesday_result_hundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayMorningStart', $this->wednesday_morning_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayMorningEnd', $this->wednesday_morning_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayAfternoonStart', $this->wednesday_afternoon_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayAfternoonEnd', $this->wednesday_afternoon_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayStart', $this->wednesday_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayEnd', $this->wednesday_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayResultStandard', $this->wednesday_result_standard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':wednesdayResultHundredths', $this->wednesday_result_hundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayMorningStart', $this->thursday_morning_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayMorningEnd', $this->thursday_morning_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayAfternoonStart', $this->thursday_afternoon_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayAfternoonEnd', $this->thursday_afternoon_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayStart', $this->thursday_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayEnd', $this->thursday_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayResultStandard', $this->thursday_result_standard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':thursdayResultHundredths', $this->thursday_result_hundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayMorningStart', $this->friday_morning_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayMorningEnd', $this->friday_morning_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayAfternoonStart', $this->friday_afternoon_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayAfternoonEnd', $this->friday_afternoon_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayStart', $this->friday_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayEnd', $this->friday_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayResultStandard', $this->friday_result_standard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':fridayResultHundredths', $this->friday_result_hundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayMorningStart', $this->saturday_morning_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayMorningEnd', $this->saturday_morning_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayAfternoonStart', $this->saturday_afternoon_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayAfternoonEnd', $this->saturday_afternoon_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayStart', $this->saturday_start, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayEnd', $this->saturday_end, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayResultStandard', $this->saturday_result_standard, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':saturdayResultHundredths', $this->saturday_result_hundredths, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':finalStandardResult', $this->final_standard_result, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':finalHundredthsResult', $this->final_hundredths_result, PDO::PARAM_STR);
         $pdoStatement->bindValue(':user_id', $this->userId, PDO::PARAM_INT);
-
+        
         $result = $pdoStatement->execute();
+        
         
         if ($result) {
             $this->id = $pdo->lastInsertId();
@@ -206,1066 +227,6 @@ class Table
 
     }
    
-
-    /**
-     * Get the value of weekStart
-     */
-    public function getWeekStart()
-    {
-        return $this->weekStart;
-    }
-
-    /**
-     * Set the value of weekStart
-     *
-     * @return  self
-     */
-    public function setWeekStart($weekStart)
-    {
-        $this->weekStart = $weekStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of weekEnd
-     */
-    public function getWeekEnd()
-    {
-        return $this->weekEnd;
-    }
-
-    /**
-     * Set the value of weekEnd
-     *
-     * @return  self
-     */
-    public function setWeekEnd($weekEnd)
-    {
-        $this->weekEnd = $weekEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayMorningStart
-     */
-    public function getMondayMorningStart()
-    {
-        return $this->mondayMorningStart;
-    }
-
-    /**
-     * Set the value of mondayMorningStart
-     *
-     * @return  self
-     */
-    public function setMondayMorningStart($mondayMorningStart)
-    {
-        $this->mondayMorningStart = $mondayMorningStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayMorningEnd
-     */
-    public function getMondayMorningEnd()
-    {
-        return $this->mondayMorningEnd;
-    }
-
-    /**
-     * Set the value of mondayMorningEnd
-     *
-     * @return  self
-     */
-    public function setMondayMorningEnd($mondayMorningEnd)
-    {
-        $this->mondayMorningEnd = $mondayMorningEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayAfternoonStart
-     */
-    public function getMondayAfternoonStart()
-    {
-        return $this->mondayAfternoonStart;
-    }
-
-    /**
-     * Set the value of mondayAfternoonStart
-     *
-     * @return  self
-     */
-    public function setMondayAfternoonStart($mondayAfternoonStart)
-    {
-        $this->mondayAfternoonStart = $mondayAfternoonStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayAfternoonEnd
-     */
-    public function getMondayAfternoonEnd()
-    {
-        return $this->mondayAfternoonEnd;
-    }
-
-    /**
-     * Set the value of mondayAfternoonEnd
-     *
-     * @return  self
-     */
-    public function setMondayAfternoonEnd($mondayAfternoonEnd)
-    {
-        $this->mondayAfternoonEnd = $mondayAfternoonEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayStart
-     */
-    public function getMondayStart()
-    {
-        return $this->mondayStart;
-    }
-
-    /**
-     * Set the value of mondayStart
-     *
-     * @return  self
-     */
-    public function setMondayStart($mondayStart)
-    {
-        $this->mondayStart = $mondayStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayEnd
-     */
-    public function getMondayEnd()
-    {
-        return $this->mondayEnd;
-    }
-
-    /**
-     * Set the value of mondayEnd
-     *
-     * @return  self
-     */
-    public function setMondayEnd($mondayEnd)
-    {
-        $this->mondayEnd = $mondayEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayResultStandard
-     */
-    public function getMondayResultStandard()
-    {
-        return $this->mondayResultStandard;
-    }
-
-    /**
-     * Set the value of mondayResultStandard
-     *
-     * @return  self
-     */
-    public function setMondayResultStandard($mondayResultStandard)
-    {
-        $this->mondayResultStandard = $mondayResultStandard;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mondayResultHundredths
-     */
-    public function getMondayResultHundredths()
-    {
-        return $this->mondayResultHundredths;
-    }
-
-    /**
-     * Set the value of mondayResultHundredths
-     *
-     * @return  self
-     */
-    public function setMondayResultHundredths($mondayResultHundredths)
-    {
-        $this->mondayResultHundredths = $mondayResultHundredths;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayMorningStart
-     */
-    public function getTuesdayMorningStart()
-    {
-        return $this->tuesdayMorningStart;
-    }
-
-    /**
-     * Set the value of tuesdayMorningStart
-     *
-     * @return  self
-     */
-    public function setTuesdayMorningStart($tuesdayMorningStart)
-    {
-        $this->tuesdayMorningStart = $tuesdayMorningStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayMorningEnd
-     */
-    public function getTuesdayMorningEnd()
-    {
-        return $this->tuesdayMorningEnd;
-    }
-
-    /**
-     * Set the value of tuesdayMorningEnd
-     *
-     * @return  self
-     */
-    public function setTuesdayMorningEnd($tuesdayMorningEnd)
-    {
-        $this->tuesdayMorningEnd = $tuesdayMorningEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayAfternoonStart
-     */
-    public function getTuesdayAfternoonStart()
-    {
-        return $this->tuesdayAfternoonStart;
-    }
-
-    /**
-     * Set the value of tuesdayAfternoonStart
-     *
-     * @return  self
-     */
-    public function setTuesdayAfternoonStart($tuesdayAfternoonStart)
-    {
-        $this->tuesdayAfternoonStart = $tuesdayAfternoonStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayAfternoonEnd
-     */
-    public function getTuesdayAfternoonEnd()
-    {
-        return $this->tuesdayAfternoonEnd;
-    }
-
-    /**
-     * Set the value of tuesdayAfternoonEnd
-     *
-     * @return  self
-     */
-    public function setTuesdayAfternoonEnd($tuesdayAfternoonEnd)
-    {
-        $this->tuesdayAfternoonEnd = $tuesdayAfternoonEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayStart
-     */
-    public function getTuesdayStart()
-    {
-        return $this->tuesdayStart;
-    }
-
-    /**
-     * Set the value of tuesdayStart
-     *
-     * @return  self
-     */
-    public function setTuesdayStart($tuesdayStart)
-    {
-        $this->tuesdayStart = $tuesdayStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayEnd
-     */
-    public function getTuesdayEnd()
-    {
-        return $this->tuesdayEnd;
-    }
-
-    /**
-     * Set the value of tuesdayEnd
-     *
-     * @return  self
-     */
-    public function setTuesdayEnd($tuesdayEnd)
-    {
-        $this->tuesdayEnd = $tuesdayEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayResultStandard
-     */
-    public function getTuesdayResultStandard()
-    {
-        return $this->tuesdayResultStandard;
-    }
-
-    /**
-     * Set the value of tuesdayResultStandard
-     *
-     * @return  self
-     */
-    public function setTuesdayResultStandard($tuesdayResultStandard)
-    {
-        $this->tuesdayResultStandard = $tuesdayResultStandard;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tuesdayResultHundredths
-     */
-    public function getTuesdayResultHundredths()
-    {
-        return $this->tuesdayResultHundredths;
-    }
-
-    /**
-     * Set the value of tuesdayResultHundredths
-     *
-     * @return  self
-     */
-    public function setTuesdayResultHundredths($tuesdayResultHundredths)
-    {
-        $this->tuesdayResultHundredths = $tuesdayResultHundredths;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayMorningStart
-     */
-    public function getWednesdayMorningStart()
-    {
-        return $this->wednesdayMorningStart;
-    }
-
-    /**
-     * Set the value of wednesdayMorningStart
-     *
-     * @return  self
-     */
-    public function setWednesdayMorningStart($wednesdayMorningStart)
-    {
-        $this->wednesdayMorningStart = $wednesdayMorningStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayMorningEnd
-     */
-    public function getWednesdayMorningEnd()
-    {
-        return $this->wednesdayMorningEnd;
-    }
-
-    /**
-     * Set the value of wednesdayMorningEnd
-     *
-     * @return  self
-     */
-    public function setWednesdayMorningEnd($wednesdayMorningEnd)
-    {
-        $this->wednesdayMorningEnd = $wednesdayMorningEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayAfternoonStart
-     */
-    public function getWednesdayAfternoonStart()
-    {
-        return $this->wednesdayAfternoonStart;
-    }
-
-    /**
-     * Set the value of wednesdayAfternoonStart
-     *
-     * @return  self
-     */
-    public function setWednesdayAfternoonStart($wednesdayAfternoonStart)
-    {
-        $this->wednesdayAfternoonStart = $wednesdayAfternoonStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayAfternoonEnd
-     */
-    public function getWednesdayAfternoonEnd()
-    {
-        return $this->wednesdayAfternoonEnd;
-    }
-
-    /**
-     * Set the value of wednesdayAfternoonEnd
-     *
-     * @return  self
-     */
-    public function setWednesdayAfternoonEnd($wednesdayAfternoonEnd)
-    {
-        $this->wednesdayAfternoonEnd = $wednesdayAfternoonEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayStart
-     */
-    public function getWednesdayStart()
-    {
-        return $this->wednesdayStart;
-    }
-
-    /**
-     * Set the value of wednesdayStart
-     *
-     * @return  self
-     */
-    public function setWednesdayStart($wednesdayStart)
-    {
-        $this->wednesdayStart = $wednesdayStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayEnd
-     */
-    public function getWednesdayEnd()
-    {
-        return $this->wednesdayEnd;
-    }
-
-    /**
-     * Set the value of wednesdayEnd
-     *
-     * @return  self
-     */
-    public function setWednesdayEnd($wednesdayEnd)
-    {
-        $this->wednesdayEnd = $wednesdayEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayResultStandard
-     */
-    public function getWednesdayResultStandard()
-    {
-        return $this->wednesdayResultStandard;
-    }
-
-    /**
-     * Set the value of wednesdayResultStandard
-     *
-     * @return  self
-     */
-    public function setWednesdayResultStandard($wednesdayResultStandard)
-    {
-        $this->wednesdayResultStandard = $wednesdayResultStandard;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of wednesdayResultHundredths
-     */
-    public function getWednesdayResultHundredths()
-    {
-        return $this->wednesdayResultHundredths;
-    }
-
-    /**
-     * Set the value of wednesdayResultHundredths
-     *
-     * @return  self
-     */
-    public function setWednesdayResultHundredths($wednesdayResultHundredths)
-    {
-        $this->wednesdayResultHundredths = $wednesdayResultHundredths;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayMorningStart
-     */
-    public function getThursdayMorningStart()
-    {
-        return $this->thursdayMorningStart;
-    }
-
-    /**
-     * Set the value of thursdayMorningStart
-     *
-     * @return  self
-     */
-    public function setThursdayMorningStart($thursdayMorningStart)
-    {
-        $this->thursdayMorningStart = $thursdayMorningStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayMorningEnd
-     */
-    public function getThursdayMorningEnd()
-    {
-        return $this->thursdayMorningEnd;
-    }
-
-    /**
-     * Set the value of thursdayMorningEnd
-     *
-     * @return  self
-     */
-    public function setThursdayMorningEnd($thursdayMorningEnd)
-    {
-        $this->thursdayMorningEnd = $thursdayMorningEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayAfternoonStart
-     */
-    public function getThursdayAfternoonStart()
-    {
-        return $this->thursdayAfternoonStart;
-    }
-
-    /**
-     * Set the value of thursdayAfternoonStart
-     *
-     * @return  self
-     */
-    public function setThursdayAfternoonStart($thursdayAfternoonStart)
-    {
-        $this->thursdayAfternoonStart = $thursdayAfternoonStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayAfternoonEnd
-     */
-    public function getThursdayAfternoonEnd()
-    {
-        return $this->thursdayAfternoonEnd;
-    }
-
-    /**
-     * Set the value of thursdayAfternoonEnd
-     *
-     * @return  self
-     */
-    public function setThursdayAfternoonEnd($thursdayAfternoonEnd)
-    {
-        $this->thursdayAfternoonEnd = $thursdayAfternoonEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayStart
-     */
-    public function getThursdayStart()
-    {
-        return $this->thursdayStart;
-    }
-
-    /**
-     * Set the value of thursdayStart
-     *
-     * @return  self
-     */
-    public function setThursdayStart($thursdayStart)
-    {
-        $this->thursdayStart = $thursdayStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayEnd
-     */
-    public function getThursdayEnd()
-    {
-        return $this->thursdayEnd;
-    }
-
-    /**
-     * Set the value of thursdayEnd
-     *
-     * @return  self
-     */
-    public function setThursdayEnd($thursdayEnd)
-    {
-        $this->thursdayEnd = $thursdayEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayResultStandard
-     */
-    public function getThursdayResultStandard()
-    {
-        return $this->thursdayResultStandard;
-    }
-
-    /**
-     * Set the value of thursdayResultStandard
-     *
-     * @return  self
-     */
-    public function setThursdayResultStandard($thursdayResultStandard)
-    {
-        $this->thursdayResultStandard = $thursdayResultStandard;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of thursdayResultHundredths
-     */
-    public function getThursdayResultHundredths()
-    {
-        return $this->thursdayResultHundredths;
-    }
-
-    /**
-     * Set the value of thursdayResultHundredths
-     *
-     * @return  self
-     */
-    public function setThursdayResultHundredths($thursdayResultHundredths)
-    {
-        $this->thursdayResultHundredths = $thursdayResultHundredths;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayMorningStart
-     */
-    public function getFridayMorningStart()
-    {
-        return $this->fridayMorningStart;
-    }
-
-    /**
-     * Set the value of fridayMorningStart
-     *
-     * @return  self
-     */
-    public function setFridayMorningStart($fridayMorningStart)
-    {
-        $this->fridayMorningStart = $fridayMorningStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayMorningEnd
-     */
-    public function getFridayMorningEnd()
-    {
-        return $this->fridayMorningEnd;
-    }
-
-    /**
-     * Set the value of fridayMorningEnd
-     *
-     * @return  self
-     */
-    public function setFridayMorningEnd($fridayMorningEnd)
-    {
-        $this->fridayMorningEnd = $fridayMorningEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayAfternoonStart
-     */
-    public function getFridayAfternoonStart()
-    {
-        return $this->fridayAfternoonStart;
-    }
-
-    /**
-     * Set the value of fridayAfternoonStart
-     *
-     * @return  self
-     */
-    public function setFridayAfternoonStart($fridayAfternoonStart)
-    {
-        $this->fridayAfternoonStart = $fridayAfternoonStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayAfternoonEnd
-     */
-    public function getFridayAfternoonEnd()
-    {
-        return $this->fridayAfternoonEnd;
-    }
-
-    /**
-     * Set the value of fridayAfternoonEnd
-     *
-     * @return  self
-     */
-    public function setFridayAfternoonEnd($fridayAfternoonEnd)
-    {
-        $this->fridayAfternoonEnd = $fridayAfternoonEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayStart
-     */
-    public function getFridayStart()
-    {
-        return $this->fridayStart;
-    }
-
-    /**
-     * Set the value of fridayStart
-     *
-     * @return  self
-     */
-    public function setFridayStart($fridayStart)
-    {
-        $this->fridayStart = $fridayStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayEnd
-     */
-    public function getFridayEnd()
-    {
-        return $this->fridayEnd;
-    }
-
-    /**
-     * Set the value of fridayEnd
-     *
-     * @return  self
-     */
-    public function setFridayEnd($fridayEnd)
-    {
-        $this->fridayEnd = $fridayEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayResultStandard
-     */
-    public function getFridayResultStandard()
-    {
-        return $this->fridayResultStandard;
-    }
-
-    /**
-     * Set the value of fridayResultStandard
-     *
-     * @return  self
-     */
-    public function setFridayResultStandard($fridayResultStandard)
-    {
-        $this->fridayResultStandard = $fridayResultStandard;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of fridayResultHundredths
-     */
-    public function getFridayResultHundredths()
-    {
-        return $this->fridayResultHundredths;
-    }
-
-    /**
-     * Set the value of fridayResultHundredths
-     *
-     * @return  self
-     */
-    public function setFridayResultHundredths($fridayResultHundredths)
-    {
-        $this->fridayResultHundredths = $fridayResultHundredths;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayMorningStart
-     */
-    public function getSaturdayMorningStart()
-    {
-        return $this->saturdayMorningStart;
-    }
-
-    /**
-     * Set the value of saturdayMorningStart
-     *
-     * @return  self
-     */
-    public function setSaturdayMorningStart($saturdayMorningStart)
-    {
-        $this->saturdayMorningStart = $saturdayMorningStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayMorningEnd
-     */
-    public function getSaturdayMorningEnd()
-    {
-        return $this->saturdayMorningEnd;
-    }
-
-    /**
-     * Set the value of saturdayMorningEnd
-     *
-     * @return  self
-     */
-    public function setSaturdayMorningEnd($saturdayMorningEnd)
-    {
-        $this->saturdayMorningEnd = $saturdayMorningEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayAfternoonStart
-     */
-    public function getSaturdayAfternoonStart()
-    {
-        return $this->saturdayAfternoonStart;
-    }
-
-    /**
-     * Set the value of saturdayAfternoonStart
-     *
-     * @return  self
-     */
-    public function setSaturdayAfternoonStart($saturdayAfternoonStart)
-    {
-        $this->saturdayAfternoonStart = $saturdayAfternoonStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayAfternoonEnd
-     */
-    public function getSaturdayAfternoonEnd()
-    {
-        return $this->saturdayAfternoonEnd;
-    }
-
-    /**
-     * Set the value of saturdayAfternoonEnd
-     *
-     * @return  self
-     */
-    public function setSaturdayAfternoonEnd($saturdayAfternoonEnd)
-    {
-        $this->saturdayAfternoonEnd = $saturdayAfternoonEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayStart
-     */
-    public function getSaturdayStart()
-    {
-        return $this->saturdayStart;
-    }
-
-    /**
-     * Set the value of saturdayStart
-     *
-     * @return  self
-     */
-    public function setSaturdayStart($saturdayStart)
-    {
-        $this->saturdayStart = $saturdayStart;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayEnd
-     */
-    public function getSaturdayEnd()
-    {
-        return $this->saturdayEnd;
-    }
-
-    /**
-     * Set the value of saturdayEnd
-     *
-     * @return  self
-     */
-    public function setSaturdayEnd($saturdayEnd)
-    {
-        $this->saturdayEnd = $saturdayEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayResultStandard
-     */
-    public function getSaturdayResultStandard()
-    {
-        return $this->saturdayResultStandard;
-    }
-
-    /**
-     * Set the value of saturdayResultStandard
-     *
-     * @return  self
-     */
-    public function setSaturdayResultStandard($saturdayResultStandard)
-    {
-        $this->saturdayResultStandard = $saturdayResultStandard;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of saturdayResultHundredths
-     */
-    public function getSaturdayResultHundredths()
-    {
-        return $this->saturdayResultHundredths;
-    }
-
-    /**
-     * Set the value of saturdayResultHundredths
-     *
-     * @return  self
-     */
-    public function setSaturdayResultHundredths($saturdayResultHundredths)
-    {
-        $this->saturdayResultHundredths = $saturdayResultHundredths;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of finalStandardResult
-     */
-    public function getFinalStandardResult()
-    {
-        return $this->finalStandardResult;
-    }
-
-    /**
-     * Set the value of finalStandardResult
-     *
-     * @return  self
-     */
-    public function setFinalStandardResult($finalStandardResult)
-    {
-        $this->finalStandardResult = $finalStandardResult;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of finalHundredthsResult
-     */
-    public function getFinalHundredthsResult()
-    {
-        return $this->finalHundredthsResult;
-    }
-
-    /**
-     * Set the value of finalHundredthsResult
-     *
-     * @return  self
-     */
-    public function setFinalHundredthsResult($finalHundredthsResult)
-    {
-        $this->finalHundredthsResult = $finalHundredthsResult;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get the value of userId
@@ -1283,6 +244,1054 @@ class Table
     public function setUserId($userId)
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the value of week_start
+     */ 
+    public function getWeekStart()
+    {
+        return $this->week_start;
+    }
+
+    /**
+     * Set the value of week_start
+     *
+     * @return  self
+     */ 
+    public function setWeekStart($week_start)
+    {
+        $this->week_start = $week_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of week_end
+     */ 
+    public function getWeekEnd()
+    {
+        return $this->week_end;
+    }
+
+    /**
+     * Set the value of week_end
+     *
+     * @return  self
+     */ 
+    public function setWeekEnd($week_end)
+    {
+        $this->week_end = $week_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_morning_start
+     */ 
+    public function getMondayMorningStart()
+    {
+        return $this->monday_morning_start;
+    }
+
+    /**
+     * Set the value of monday_morning_start
+     *
+     * @return  self
+     */ 
+    public function setMondayMorningStart($monday_morning_start)
+    {
+        $this->monday_morning_start = $monday_morning_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_morning_end
+     */ 
+    public function getMondayMorningEnd()
+    {
+        return $this->monday_morning_end;
+    }
+
+    /**
+     * Set the value of monday_morning_end
+     *
+     * @return  self
+     */ 
+    public function setMondayMorningEnd($monday_morning_end)
+    {
+        $this->monday_morning_end = $monday_morning_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_afternoon_start
+     */ 
+    public function getMondayAfternoonStart()
+    {
+        return $this->monday_afternoon_start;
+    }
+
+    /**
+     * Set the value of monday_afternoon_start
+     *
+     * @return  self
+     */ 
+    public function setMondayAfternoonStart($monday_afternoon_start)
+    {
+        $this->monday_afternoon_start = $monday_afternoon_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_afternoon_end
+     */ 
+    public function getMondayAfternoonEnd()
+    {
+        return $this->monday_afternoon_end;
+    }
+
+    /**
+     * Set the value of monday_afternoon_end
+     *
+     * @return  self
+     */ 
+    public function setMondayAfternoonEnd($monday_afternoon_end)
+    {
+        $this->monday_afternoon_end = $monday_afternoon_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_start
+     */ 
+    public function getMondayStart()
+    {
+        return $this->monday_start;
+    }
+
+    /**
+     * Set the value of monday_start
+     *
+     * @return  self
+     */ 
+    public function setMondayStart($monday_start)
+    {
+        $this->monday_start = $monday_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_end
+     */ 
+    public function getMondayEnd()
+    {
+        return $this->monday_end;
+    }
+
+    /**
+     * Set the value of monday_end
+     *
+     * @return  self
+     */ 
+    public function setMondayEnd($monday_end)
+    {
+        $this->monday_end = $monday_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_result_standard
+     */ 
+    public function getMondayResultStandard()
+    {
+        return $this->monday_result_standard;
+    }
+
+    /**
+     * Set the value of monday_result_standard
+     *
+     * @return  self
+     */ 
+    public function setMondayResultStandard($monday_result_standard)
+    {
+        $this->monday_result_standard = $monday_result_standard;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of monday_result_hundredths
+     */ 
+    public function getMondayResultHundredths()
+    {
+        return $this->monday_result_hundredths;
+    }
+
+    /**
+     * Set the value of monday_result_hundredths
+     *
+     * @return  self
+     */ 
+    public function setMondayResultHundredths($monday_result_hundredths)
+    {
+        $this->monday_result_hundredths = $monday_result_hundredths;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_morning_start
+     */ 
+    public function getTuesdayMorningStart()
+    {
+        return $this->tuesday_morning_start;
+    }
+
+    /**
+     * Set the value of tuesday_morning_start
+     *
+     * @return  self
+     */ 
+    public function setTuesdayMorningStart($tuesday_morning_start)
+    {
+        $this->tuesday_morning_start = $tuesday_morning_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_morning_end
+     */ 
+    public function getTuesdayMorningEnd()
+    {
+        return $this->tuesday_morning_end;
+    }
+
+    /**
+     * Set the value of tuesday_morning_end
+     *
+     * @return  self
+     */ 
+    public function setTuesdayMorningEnd($tuesday_morning_end)
+    {
+        $this->tuesday_morning_end = $tuesday_morning_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_afternoon_start
+     */ 
+    public function getTuesdayAfternoonStart()
+    {
+        return $this->tuesday_afternoon_start;
+    }
+
+    /**
+     * Set the value of tuesday_afternoon_start
+     *
+     * @return  self
+     */ 
+    public function setTuesdayAfternoonStart($tuesday_afternoon_start)
+    {
+        $this->tuesday_afternoon_start = $tuesday_afternoon_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_afternoon_end
+     */ 
+    public function getTuesdayAfternoonEnd()
+    {
+        return $this->tuesday_afternoon_end;
+    }
+
+    /**
+     * Set the value of tuesday_afternoon_end
+     *
+     * @return  self
+     */ 
+    public function setTuesdayAfternoonEnd($tuesday_afternoon_end)
+    {
+        $this->tuesday_afternoon_end = $tuesday_afternoon_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_start
+     */ 
+    public function getTuesdayStart()
+    {
+        return $this->tuesday_start;
+    }
+
+    /**
+     * Set the value of tuesday_start
+     *
+     * @return  self
+     */ 
+    public function setTuesdayStart($tuesday_start)
+    {
+        $this->tuesday_start = $tuesday_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_end
+     */ 
+    public function getTuesdayEnd()
+    {
+        return $this->tuesday_end;
+    }
+
+    /**
+     * Set the value of tuesday_end
+     *
+     * @return  self
+     */ 
+    public function setTuesdayEnd($tuesday_end)
+    {
+        $this->tuesday_end = $tuesday_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_result_standard
+     */ 
+    public function getTuesdayResultStandard()
+    {
+        return $this->tuesday_result_standard;
+    }
+
+    /**
+     * Set the value of tuesday_result_standard
+     *
+     * @return  self
+     */ 
+    public function setTuesdayResultStandard($tuesday_result_standard)
+    {
+        $this->tuesday_result_standard = $tuesday_result_standard;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tuesday_result_hundredths
+     */ 
+    public function getTuesdayResultHundredths()
+    {
+        return $this->tuesday_result_hundredths;
+    }
+
+    /**
+     * Set the value of tuesday_result_hundredths
+     *
+     * @return  self
+     */ 
+    public function setTuesdayResultHundredths($tuesday_result_hundredths)
+    {
+        $this->tuesday_result_hundredths = $tuesday_result_hundredths;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_morning_start
+     */ 
+    public function getWednesdayMorningStart()
+    {
+        return $this->wednesday_morning_start;
+    }
+
+    /**
+     * Set the value of wednesday_morning_start
+     *
+     * @return  self
+     */ 
+    public function setWednesdayMorningStart($wednesday_morning_start)
+    {
+        $this->wednesday_morning_start = $wednesday_morning_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_morning_end
+     */ 
+    public function getWednesdayMorningEnd()
+    {
+        return $this->wednesday_morning_end;
+    }
+
+    /**
+     * Set the value of wednesday_morning_end
+     *
+     * @return  self
+     */ 
+    public function setWednesdayMorningEnd($wednesday_morning_end)
+    {
+        $this->wednesday_morning_end = $wednesday_morning_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_afternoon_start
+     */ 
+    public function getWednesdayAfternoonStart()
+    {
+        return $this->wednesday_afternoon_start;
+    }
+
+    /**
+     * Set the value of wednesday_afternoon_start
+     *
+     * @return  self
+     */ 
+    public function setWednesdayAfternoonStart($wednesday_afternoon_start)
+    {
+        $this->wednesday_afternoon_start = $wednesday_afternoon_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_afternoon_end
+     */ 
+    public function getWednesdayAfternoonEnd()
+    {
+        return $this->wednesday_afternoon_end;
+    }
+
+    /**
+     * Set the value of wednesday_afternoon_end
+     *
+     * @return  self
+     */ 
+    public function setWednesdayAfternoonEnd($wednesday_afternoon_end)
+    {
+        $this->wednesday_afternoon_end = $wednesday_afternoon_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_start
+     */ 
+    public function getWednesdayStart()
+    {
+        return $this->wednesday_start;
+    }
+
+    /**
+     * Set the value of wednesday_start
+     *
+     * @return  self
+     */ 
+    public function setWednesdayStart($wednesday_start)
+    {
+        $this->wednesday_start = $wednesday_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_end
+     */ 
+    public function getWednesdayEnd()
+    {
+        return $this->wednesday_end;
+    }
+
+    /**
+     * Set the value of wednesday_end
+     *
+     * @return  self
+     */ 
+    public function setWednesdayEnd($wednesday_end)
+    {
+        $this->wednesday_end = $wednesday_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_result_standard
+     */ 
+    public function getWednesdayResultStandard()
+    {
+        return $this->wednesday_result_standard;
+    }
+
+    /**
+     * Set the value of wednesday_result_standard
+     *
+     * @return  self
+     */ 
+    public function setWednesdayResultStandard($wednesday_result_standard)
+    {
+        $this->wednesday_result_standard = $wednesday_result_standard;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of wednesday_result_hundredths
+     */ 
+    public function getWednesdayResultHundredths()
+    {
+        return $this->wednesday_result_hundredths;
+    }
+
+    /**
+     * Set the value of wednesday_result_hundredths
+     *
+     * @return  self
+     */ 
+    public function setWednesdayResultHundredths($wednesday_result_hundredths)
+    {
+        $this->wednesday_result_hundredths = $wednesday_result_hundredths;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_morning_start
+     */ 
+    public function getThursdayMorningStart()
+    {
+        return $this->thursday_morning_start;
+    }
+
+    /**
+     * Set the value of thursday_morning_start
+     *
+     * @return  self
+     */ 
+    public function setThursdayMorningStart($thursday_morning_start)
+    {
+        $this->thursday_morning_start = $thursday_morning_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_morning_end
+     */ 
+    public function getThursdayMorningEnd()
+    {
+        return $this->thursday_morning_end;
+    }
+
+    /**
+     * Set the value of thursday_morning_end
+     *
+     * @return  self
+     */ 
+    public function setThursdayMorningEnd($thursday_morning_end)
+    {
+        $this->thursday_morning_end = $thursday_morning_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_afternoon_start
+     */ 
+    public function getThursdayAfternoonStart()
+    {
+        return $this->thursday_afternoon_start;
+    }
+
+    /**
+     * Set the value of thursday_afternoon_start
+     *
+     * @return  self
+     */ 
+    public function setThursdayAfternoonStart($thursday_afternoon_start)
+    {
+        $this->thursday_afternoon_start = $thursday_afternoon_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_afternoon_end
+     */ 
+    public function getThursdayAfternoonEnd()
+    {
+        return $this->thursday_afternoon_end;
+    }
+
+    /**
+     * Set the value of thursday_afternoon_end
+     *
+     * @return  self
+     */ 
+    public function setThursdayAfternoonEnd($thursday_afternoon_end)
+    {
+        $this->thursday_afternoon_end = $thursday_afternoon_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_start
+     */ 
+    public function getThursdayStart()
+    {
+        return $this->thursday_start;
+    }
+
+    /**
+     * Set the value of thursday_start
+     *
+     * @return  self
+     */ 
+    public function setThursdayStart($thursday_start)
+    {
+        $this->thursday_start = $thursday_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_end
+     */ 
+    public function getThursdayEnd()
+    {
+        return $this->thursday_end;
+    }
+
+    /**
+     * Set the value of thursday_end
+     *
+     * @return  self
+     */ 
+    public function setThursdayEnd($thursday_end)
+    {
+        $this->thursday_end = $thursday_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_result_standard
+     */ 
+    public function getThursdayResultStandard()
+    {
+        return $this->thursday_result_standard;
+    }
+
+    /**
+     * Set the value of thursday_result_standard
+     *
+     * @return  self
+     */ 
+    public function setThursdayResultStandard($thursday_result_standard)
+    {
+        $this->thursday_result_standard = $thursday_result_standard;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of thursday_result_hundredths
+     */ 
+    public function getThursdayResultHundredths()
+    {
+        return $this->thursday_result_hundredths;
+    }
+
+    /**
+     * Set the value of thursday_result_hundredths
+     *
+     * @return  self
+     */ 
+    public function setThursdayResultHundredths($thursday_result_hundredths)
+    {
+        $this->thursday_result_hundredths = $thursday_result_hundredths;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_morning_start
+     */ 
+    public function getFridayMorningStart()
+    {
+        return $this->friday_morning_start;
+    }
+
+    /**
+     * Set the value of friday_morning_start
+     *
+     * @return  self
+     */ 
+    public function setFridayMorningStart($friday_morning_start)
+    {
+        $this->friday_morning_start = $friday_morning_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_morning_end
+     */ 
+    public function getFridayMorningEnd()
+    {
+        return $this->friday_morning_end;
+    }
+
+    /**
+     * Set the value of friday_morning_end
+     *
+     * @return  self
+     */ 
+    public function setFridayMorningEnd($friday_morning_end)
+    {
+        $this->friday_morning_end = $friday_morning_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_afternoon_start
+     */ 
+    public function getFridayAfternoonStart()
+    {
+        return $this->friday_afternoon_start;
+    }
+
+    /**
+     * Set the value of friday_afternoon_start
+     *
+     * @return  self
+     */ 
+    public function setFridayAfternoonStart($friday_afternoon_start)
+    {
+        $this->friday_afternoon_start = $friday_afternoon_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_afternoon_end
+     */ 
+    public function getFridayAfternoonEnd()
+    {
+        return $this->friday_afternoon_end;
+    }
+
+    /**
+     * Set the value of friday_afternoon_end
+     *
+     * @return  self
+     */ 
+    public function setFridayAfternoonEnd($friday_afternoon_end)
+    {
+        $this->friday_afternoon_end = $friday_afternoon_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_start
+     */ 
+    public function getFridayStart()
+    {
+        return $this->friday_start;
+    }
+
+    /**
+     * Set the value of friday_start
+     *
+     * @return  self
+     */ 
+    public function setFridayStart($friday_start)
+    {
+        $this->friday_start = $friday_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_end
+     */ 
+    public function getFridayEnd()
+    {
+        return $this->friday_end;
+    }
+
+    /**
+     * Set the value of friday_end
+     *
+     * @return  self
+     */ 
+    public function setFridayEnd($friday_end)
+    {
+        $this->friday_end = $friday_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_result_standard
+     */ 
+    public function getFridayResultStandard()
+    {
+        return $this->friday_result_standard;
+    }
+
+    /**
+     * Set the value of friday_result_standard
+     *
+     * @return  self
+     */ 
+    public function setFridayResultStandard($friday_result_standard)
+    {
+        $this->friday_result_standard = $friday_result_standard;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of friday_result_hundredths
+     */ 
+    public function getFridayResultHundredths()
+    {
+        return $this->friday_result_hundredths;
+    }
+
+    /**
+     * Set the value of friday_result_hundredths
+     *
+     * @return  self
+     */ 
+    public function setFridayResultHundredths($friday_result_hundredths)
+    {
+        $this->friday_result_hundredths = $friday_result_hundredths;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_morning_start
+     */ 
+    public function getSaturdayMorningStart()
+    {
+        return $this->saturday_morning_start;
+    }
+
+    /**
+     * Set the value of saturday_morning_start
+     *
+     * @return  self
+     */ 
+    public function setSaturdayMorningStart($saturday_morning_start)
+    {
+        $this->saturday_morning_start = $saturday_morning_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_morning_end
+     */ 
+    public function getSaturdayMorningEnd()
+    {
+        return $this->saturday_morning_end;
+    }
+
+    /**
+     * Set the value of saturday_morning_end
+     *
+     * @return  self
+     */ 
+    public function setSaturdayMorningEnd($saturday_morning_end)
+    {
+        $this->saturday_morning_end = $saturday_morning_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_afternoon_start
+     */ 
+    public function getSaturdayAfternoonStart()
+    {
+        return $this->saturday_afternoon_start;
+    }
+
+    /**
+     * Set the value of saturday_afternoon_start
+     *
+     * @return  self
+     */ 
+    public function setSaturdayAfternoonStart($saturday_afternoon_start)
+    {
+        $this->saturday_afternoon_start = $saturday_afternoon_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_afternoon_end
+     */ 
+    public function getSaturdayAfternoonEnd()
+    {
+        return $this->saturday_afternoon_end;
+    }
+
+    /**
+     * Set the value of saturday_afternoon_end
+     *
+     * @return  self
+     */ 
+    public function setSaturdayAfternoonEnd($saturday_afternoon_end)
+    {
+        $this->saturday_afternoon_end = $saturday_afternoon_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_start
+     */ 
+    public function getSaturdayStart()
+    {
+        return $this->saturday_start;
+    }
+
+    /**
+     * Set the value of saturday_start
+     *
+     * @return  self
+     */ 
+    public function setSaturdayStart($saturday_start)
+    {
+        $this->saturday_start = $saturday_start;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_end
+     */ 
+    public function getSaturdayEnd()
+    {
+        return $this->saturday_end;
+    }
+
+    /**
+     * Set the value of saturday_end
+     *
+     * @return  self
+     */ 
+    public function setSaturdayEnd($saturday_end)
+    {
+        $this->saturday_end = $saturday_end;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_result_standard
+     */ 
+    public function getSaturdayResultStandard()
+    {
+        return $this->saturday_result_standard;
+    }
+
+    /**
+     * Set the value of saturday_result_standard
+     *
+     * @return  self
+     */ 
+    public function setSaturdayResultStandard($saturday_result_standard)
+    {
+        $this->saturday_result_standard = $saturday_result_standard;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of saturday_result_hundredths
+     */ 
+    public function getSaturdayResultHundredths()
+    {
+        return $this->saturday_result_hundredths;
+    }
+
+    /**
+     * Set the value of saturday_result_hundredths
+     *
+     * @return  self
+     */ 
+    public function setSaturdayResultHundredths($saturday_result_hundredths)
+    {
+        $this->saturday_result_hundredths = $saturday_result_hundredths;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of final_standard_result
+     */ 
+    public function getFinalStandardResult()
+    {
+        return $this->final_standard_result;
+    }
+
+    /**
+     * Set the value of final_standard_result
+     *
+     * @return  self
+     */ 
+    public function setFinalStandardResult($final_standard_result)
+    {
+        $this->final_standard_result = $final_standard_result;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of final_hundredths_result
+     */ 
+    public function getFinalHundredthsResult()
+    {
+        return $this->final_hundredths_result;
+    }
+
+    /**
+     * Set the value of final_hundredths_result
+     *
+     * @return  self
+     */ 
+    public function setFinalHundredthsResult($final_hundredths_result)
+    {
+        $this->final_hundredths_result = $final_hundredths_result;
 
         return $this;
     }

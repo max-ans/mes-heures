@@ -38,54 +38,47 @@
         <div class="card-body tables d-none">
             <h5 class="card-title">Mes tableaux</h5>
             <div class="d-flex flex-wrap justify-content-center">
+            <?php
+                if (isset($tables) && !empty($tables)) {
+                    
+                 foreach ($tables as $table ) {
+            ?>
                 <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="mignature du tableau">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">
+                            Tableau d'heures du :  <br> 
+                            <span class="fw-bold">
+                                <?= empty($table->getWeekStart()) ? 
+                                '(date non définie)' :
+                                date_format(date_create($table->getWeekStart()), "d M Y") ?> 
+                            </span>
+                            <br>
+                            au
+                            <br>
+                            <span class="fw-bold">
+                                <?= empty($table->getWeekEnd()) ?
+                                '(date non définie)' :
+                                date_format(date_create($table->getWeekEnd()), "d M Y")?>
+                            </span>
+                        </p>
                     </div>
                 </div>
-                <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
+            <?php
+                }} else {
+            ?>
+                <div class="text-center">
+                    <p class="m-auto text-center">
+                        Vous n'avez enregistré aucun tableau pour l'instant.
+                    </p>
+                    <br>
+                    <br>
+                    <a href="<?= $router->generate('homepage') ?>">Créer un tableau</a>
                 </div>
-                <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
+
+            <?php
+                }
+            ?>
             </div>
             
         </div>

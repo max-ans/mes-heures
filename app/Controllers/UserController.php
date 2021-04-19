@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Table;
 use App\Models\User;
 use App\Utils\Authentication;
 
@@ -17,7 +18,13 @@ class UserController extends MainController
             $authenticator = new Authentication($this->router);
     
             if ($authenticator->checkAuthentication($user)) {
-                $viewDatas['user'] = $user;
+
+                $tables = Table::findAllByUserId($user->getId());
+
+                $viewDatas = [
+                    'user' => $user,
+                    'tables' => $tables
+                ];
         
                 return $this->render('user/show.tpl.php', $viewDatas);
     
