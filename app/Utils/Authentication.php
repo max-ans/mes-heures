@@ -16,14 +16,15 @@ class Authentication extends MainController
                 return true;
                 
             } else {
-                
+                http_response_code(403);
                 return $this->render('errors/err403.tpl.php');
-            }
-
+                
+            }  
             
         }
-
+        http_response_code(302);
         return $this->redirectTo('login');
+        
     }
 }  
 

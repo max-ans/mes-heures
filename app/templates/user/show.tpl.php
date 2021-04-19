@@ -71,9 +71,7 @@
                     <p class="m-auto text-center">
                         Vous n'avez enregistré aucun tableau pour l'instant.
                     </p>
-                    <br>
-                    <br>
-                    <a href="<?= $router->generate('homepage') ?>">Créer un tableau</a>
+                    
                 </div>
 
             <?php

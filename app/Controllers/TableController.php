@@ -12,6 +12,28 @@ class TableController extends MainController
     {
         // this method find one table by his id,
         // and send it at view
+        $user = $_SESSION['connectedUser'];
+
+        if ($user) {
+
+            $authenticator = new Authentication($this->router);
+
+            if ($authenticator->checkAuthentication($user)) {
+
+                $table = Table::find($id);
+                
+                if ($table) {
+                    $viewDatas['table'] = $table;
+
+                    return $this->render('tables/show.tpl.php');
+
+                }
+
+                return $this->render('errors/err404.tpl.php');
+            }
+        }
+
+        return $this->redirectTo('login');
     }
 
     public function tablePost ()

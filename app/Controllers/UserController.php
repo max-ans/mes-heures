@@ -31,6 +31,8 @@ class UserController extends MainController
             }
         } else {
 
+            http_response_code(404);
+
             return $this->render('errors/err404.tpl.php');
         }
     
@@ -55,7 +57,7 @@ class UserController extends MainController
             }
                 
         } else {
-
+            http_response_code(404);
             return $this->render('errors/err404.tpl.php');
         }
         
@@ -206,7 +208,7 @@ class UserController extends MainController
             }
 
         } else {
-
+            http_response_code(404);
             return $this->render('errors/err404.tpl.php');
         }
     }

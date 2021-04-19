@@ -38,8 +38,10 @@ class MainController
     public function redirectTo ($routeName, $params = null)
     {
         if ($params){
+            http_response_code(302);
             return header('Location:'. $this->router->generate($routeName, ['nickname' => $params]));
         }
+        http_response_code(302);
         return header('Location:'. $this->router->generate($routeName));
     }
 }
