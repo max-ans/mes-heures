@@ -42,27 +42,30 @@
                 if (isset($tables) && !empty($tables)) {
                     
                  foreach ($tables as $table ) {
+                     
             ?>
                 <div class="card m-3 card__table" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="mignature du tableau">
-                    <div class="card-body">
-                        <p class="card-text">
-                            Tableau d'heures du :  <br> 
-                            <span class="fw-bold">
-                                <?= empty($table->getWeekStart()) ? 
-                                '(date non définie)' :
-                                date_format(date_create($table->getWeekStart()), "d M Y") ?> 
-                            </span>
-                            <br>
-                            au
-                            <br>
-                            <span class="fw-bold">
-                                <?= empty($table->getWeekEnd()) ?
-                                '(date non définie)' :
-                                date_format(date_create($table->getWeekEnd()), "d M Y")?>
-                            </span>
-                        </p>
-                    </div>
+                    <a href="<?= $router->generate('table-single' , [ 'id' => $table->getId()]) ?>">
+                        <img src="" class="card-img-top" alt="mignature du tableau">
+                        <div class="card-body">
+                            <p class="card-text">
+                                Tableau d'heures du :  <br> 
+                                <span class="fw-bold">
+                                    <?= empty($table->getWeekStart()) ? 
+                                    '(date non définie)' :
+                                    date_format(date_create($table->getWeekStart()), "d M Y") ?> 
+                                </span>
+                                <br>
+                                au
+                                <br>
+                                <span class="fw-bold">
+                                    <?= empty($table->getWeekEnd()) ?
+                                    '(date non définie)' :
+                                    date_format(date_create($table->getWeekEnd()), "d M Y")?>
+                                </span>
+                            </p>
+                        </div>
+                    </a>
                 </div>
             <?php
                 }} else {

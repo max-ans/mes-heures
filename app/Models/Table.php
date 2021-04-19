@@ -119,16 +119,16 @@ class Table
     public static function find ($id) 
     {
         $pdo = Database::getPDO();
-
+        
         $sql = "SELECT *
                FROM `table`
-               WHERE $id
+               WHERE id = $id
         ";
 
         $pdoStatement = $pdo->query($sql);
 
         $result = $pdoStatement->fetchObject(self::class);
-
+        // dd(" la je suis dans l entité" ,$result);
         return $result;
     }
 

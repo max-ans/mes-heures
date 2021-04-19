@@ -19,16 +19,16 @@ class TableController extends MainController
             $authenticator = new Authentication($this->router);
 
             if ($authenticator->checkAuthentication($user)) {
-
+           
                 $table = Table::find($id);
-                
+
                 if ($table) {
                     $viewDatas['table'] = $table;
 
-                    return $this->render('tables/show.tpl.php');
+                    return $this->render('tables/show.tpl.php', $viewDatas);
 
                 }
-
+                http_response_code(404);
                 return $this->render('errors/err404.tpl.php');
             }
         }
