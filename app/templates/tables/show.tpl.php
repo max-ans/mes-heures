@@ -3,8 +3,15 @@
 
   <div class="table-responsive">
   <?php
-    // dump($_SERVER);
-  ?>
+        if (isset($errorsList)) {
+            foreach ($errorsList as $error ) {
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $error ?>
+        </div>
+    <?php
+        }}
+    ?>
     <div class="table__header d-flex justify-content-between">
         <h2>Semaine du: <br> 
             <span class="fw-bold"> <?= date_format(date_create($table->getWeekStart()), "d.m.Y") ?></span> au <span class="fw-bold"> <?= date_format(date_create($table->getWeekEnd()), "d.m.Y") ?></span>
@@ -431,6 +438,13 @@
   </div>
   <section class="printing mt-5 user__action ">
     <button type="button" class="btn btn-outline-primary btn-lg btn-block print ">Imprimer le tableau</button>
+  </section>
+
+  <section class="printing mt-5 mb-5 user__action ">
+        <form action="<?= $router->generate('table-delete', ['id' => $table->getId()]) ?>" method="post" class="delete__form">  
+            <input type="hidden" name="token" value="<?= isset($oldValue) ? $oldValue['oldToken'] : $token ?>">
+            <button type="button" class="btn btn-outline-warning btn-lg btn-block delete " >Supprimer le tableau</button>
+        </form>
   </section>
 
   

@@ -132,6 +132,26 @@ class Table
         return $result;
     }
 
+    public function delete ()
+    {
+        $pdo = Database::getPDO();
+
+        $sql= "DELETE FROM `table` WHERE id = :id
+        ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        $result = $pdoStatement->execute();
+
+        if ($result) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static function findAllByUserId ($id)
     {
         $pdo = Database::getPDO();

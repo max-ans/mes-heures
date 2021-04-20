@@ -21,6 +21,8 @@ let app = {
         app.elements.tableForm = document.querySelector('.table__form');
         app.elements.downloadButton = document.querySelector('.download');
         app.elements.calcBtns = document.querySelectorAll('.calc');
+        app.elements.deleteButton = document.querySelector('.delete');
+        app.elements.deleteForm = document.querySelector('.delete__form');
 
         app.startListening();
     },
@@ -48,6 +50,10 @@ let app = {
 
         if (app.elements.downloadButton) {
             app.elements.downloadButton.addEventListener('click', app.handleSubmitSavedForm);
+        }
+
+        if (app.elements.deleteButton) {
+            app.elements.deleteButton.addEventListener('click', app.deleteTable);
         }
     },
 
@@ -214,6 +220,13 @@ let app = {
     
         currentInput.value = `${detail._data.hours}h${detail._data.minutes}`;
         nextInput.value = `${detail._data.hours}h${app.inHundredths(detail._data.minutes)}`;    
+    },
+
+    deleteTable: function (event) {
+        if(window.confirm("Êtes-vous sûr de vouloir supprimer ce tableau")) {
+          app.elements.deleteForm.submit();  
+        } 
+
     }
 }
 

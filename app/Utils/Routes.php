@@ -113,3 +113,13 @@ $router->map(
     ],
     'table-post'
 );
+
+$router->map(
+    'POST',
+    '/tableau/[i:id]',
+    [
+        'method' => 'deleteTable',
+        'controller' => '\App\Controllers\TableController'
+    ],
+    'table-delete'
+);

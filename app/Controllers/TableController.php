@@ -12,6 +12,8 @@ class TableController extends MainController
     {
         // this method find one table by his id,
         // and send it at view
+
+        unset($_SESSION['tableSuccess']);
         $user = $_SESSION['connectedUser'];
 
         if ($user) {
@@ -23,7 +25,13 @@ class TableController extends MainController
                 $table = Table::find($id);
 
                 if ($table) {
-                    $viewDatas['table'] = $table;
+
+                    $token = $this->getTokenCsrf();
+                    $viewDatas = [
+                        'table' => $table,
+                        'token' => $token
+                    ];
+                    
 
                     return $this->render('tables/show.tpl.php', $viewDatas);
 
@@ -192,5 +200,58 @@ class TableController extends MainController
         }
 
         return $this->redirectTo('login');
+    }
+
+    public function deleteTable ($id)
+    {
+
+        $user = $_SESSION['connectedUser'];
+
+        if ($user) {
+
+            $authenticator = new Authentication($this->router);
+
+            if ($authenticator->checkAuthentication($user)) {
+                $table = Table::find($id);
+
+                $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+                
+                $errorsList = [];
+                
+                if(empty($token) || $token != $_SESSION['csrfToken']){
+                    $errorsList[] = "Erreur CSRF !";
+                }
+                
+                if (empty($errorsList)) {
+        
+                    if($table) {
+                        $result = $table->delete();
+
+                        if($result) {
+
+                            $_SESSION['tableSuccess'] = "Votre tableau a bien été supprimer";
+
+                            return $this->redirectTo('profil', $user->getNickname());
+                        }
+
+                        $errorsList[] = "Une erreur s'est produite, veuillez réessayer plus tard ou contacter un administrateur";
+
+                    }
+                }
+        
+                $viewDatas = [
+                    'errorsList' => $errorsList,
+                    'table'      => $table,
+                    'oldValue'   => [
+                        'oldToken' => $token 
+                    ],
+                ];
+                
+                return $this->render('tables/show.tpl.php', $viewDatas);
+            }
+
+            return $this->redirectTo('login');
+        }
+
     }
 }
