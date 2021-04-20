@@ -46,7 +46,7 @@
             ?>
                 <div class="card m-3 card__table" style="width: 18rem;">
                     <a href="<?= $router->generate('table-single' , [ 'id' => $table->getId()]) ?>">
-                        <img src="" class="card-img-top" alt="mignature du tableau">
+                        
                         <div class="card-body">
                             <p class="card-text">
                                 Tableau d'heures du :  <br> 
