@@ -1,0 +1,23 @@
+@keyframes success {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+
+    50% {
+        opacity: 1;
+        display: block;
+    }
+
+    75% {
+        opacity: 1;
+        display: block;
+        top: 11%
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+        top: -5em;
+    }
+}

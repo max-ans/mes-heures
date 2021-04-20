@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    min-height: 100vh;
 
 }
 th, td {
@@ -24,17 +25,53 @@ th, td {
 }
 
 .footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #DC3545;
+    background-color: #336EFD;
     color: white;
+    opacity: 0.7;
+   
 }
 
-.download {
+.download, .screenshot, .print, .delete {
     width: 100%;
 }
+
+.card__table {
+    transition: all 0.3s;
+    box-shadow: 5px 5px 10px rgba(128, 128, 128, 0.603);
+}
+
+.card__table:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.603);
+
+    
+}
+
+.update__success {
+    opacity: 0;
+    animation: success 5s;
+    position: absolute;
+    top: 11%;
+    left: 0;
+    right: 0;
+    max-width: 65%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.link__register, .infos {
+    color: grey;
+    font-style: italic;
+}
+.empty {
+    background-color: #CFE2FF !important;
+    height: 4em;
+}
+
 
 @media screen and (min-width: 992px ) {
     .result , 
@@ -45,14 +82,14 @@ th, td {
       
     } 
 
-    .footer {
+    /* .footer {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: #DC3545;
+        background-color: #336EFD;
         color: white;
-    }
+    } */
 }
 @media print {
     header {
@@ -68,4 +105,15 @@ th, td {
         background-color: white;
     }
 
+}
+
+@media screen and (min-height: 949px) {
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #336EFD;
+        color: white;
+    }
 }

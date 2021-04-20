@@ -8,30 +8,79 @@ let app = {
 
     init: function () {      
         console.log('app.init');
-        app.elements.formDays = document.querySelectorAll('.block__form');
         app.elements.resultBtn = document.querySelector('.calc__result');
         app.elements.resultForAllDays= document.querySelectorAll('.standardResult');
         app.elements.resetBtn = document.querySelectorAll('.reset');
         app.elements.totalResultInputs = document.querySelectorAll('.total__result');
         app.elements.finalResultInput = document.querySelector('.finalResult');
         app.elements.finalHundredthsResultInput = document.querySelector('.hundredthsResult');
+        app.elements.printButton = document.querySelector('.print');
+        app.elements.cardLinks = document.querySelectorAll('.card-link');
+        app.elements.profilData = document.querySelector('.profil');
+        app.elements.tablesData = document.querySelector('.tables');
+        app.elements.tableForm = document.querySelector('.table__form');
         app.elements.downloadButton = document.querySelector('.download');
-        
+        app.elements.calcBtns = document.querySelectorAll('.calc');
+        app.elements.deleteButton = document.querySelector('.delete');
+        app.elements.deleteForm = document.querySelector('.delete__form');
+
         app.startListening();
     },
 
     startListening: function () {
-        app.elements.formDays.forEach(element => {
-            element.addEventListener('submit', app.handleSetDaysValue);
+        app.elements.calcBtns.forEach(element => {
+            element.addEventListener('click', app.handleSetDaysValue);
         });
 
         app.elements.resetBtn.forEach(element => {
             element.addEventListener('click', app.resetFieldForDay);
         })
 
-        app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
+        app.elements.cardLinks.forEach(link => {
+            link.addEventListener('click' , app.handleClickLink);
+        })
 
-        app.elements.downloadButton.addEventListener('click', app.handlePrintTable);
+        if (app.elements.resultBtn) {
+            app.elements.resultBtn.addEventListener('click', app.handleSubmitTotalCalc);
+        }
+
+        if (app.elements.printButton) {
+            app.elements.printButton.addEventListener('click', app.handlePrintTable);
+        }
+
+        if (app.elements.downloadButton) {
+            app.elements.downloadButton.addEventListener('click', app.handleSubmitSavedForm);
+        }
+
+        if (app.elements.deleteButton) {
+            app.elements.deleteButton.addEventListener('click', app.deleteTable);
+        }
+    },
+
+    handleSubmitSavedForm: function () {
+        if(window.confirm("Êtes-vous sûr de vouloir sauvegarder ce tableau")) {
+            app.elements.tableForm.submit();
+        } 
+    },
+
+    handleClickLink: function (event) {
+        event.preventDefault();
+        app.elements.cardLinks.forEach(link => {
+            link.classList.remove('active');
+        })
+        event.target.classList.add('active');
+
+        switch (event.target.dataset.link) {
+            case 'profil':
+                app.elements.tablesData.classList.add('d-none');
+                app.elements.profilData.classList.remove('d-none');
+                break;
+            case 'tables':
+                app.elements.profilData.classList.add('d-none');
+                app.elements.tablesData.classList.remove('d-none');
+            default:
+                break;
+        }
     },
 
     handlePrintTable: function () {
@@ -171,6 +220,13 @@ let app = {
     
         currentInput.value = `${detail._data.hours}h${detail._data.minutes}`;
         nextInput.value = `${detail._data.hours}h${app.inHundredths(detail._data.minutes)}`;    
+    },
+
+    deleteTable: function (event) {
+        if(window.confirm("Êtes-vous sûr de vouloir supprimer ce tableau")) {
+          app.elements.deleteForm.submit();  
+        } 
+
     }
 }
 

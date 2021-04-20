@@ -1,0 +1,20 @@
+{
+    "name": "max-ans/mes-heures",
+    "description": "Création de tableaux d'heures par semaine",
+    "require": {
+        "altorouter/altorouter": "^2.0",
+        "benoclock/alto-dispatcher": "1.1"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    },
+    "authors": [
+        {
+            "name": "max-ans",
+            "email": "maxenceroyer@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"App\\": "app/"}
+    }
+}
