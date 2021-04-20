@@ -58,5 +58,14 @@
         </div>
       </div>
     </nav>
+    <noscript>
+    <div class="alert alert-warning container text-center mt-3" role="alert">
+        Votre navigateur n'accepte pas l'utilisation de JavaScript!!!
+        <br>
+        Il est nécessaire que celle-ci soit activée pour benificier pleinement des fonctionnalités de MesHeures 
+        <br>
+        <a href="https://support.google.com/adsense/answer/12654?hl=fr" target="_blank">comment activer l'utilisation de JavaScript</a>
+    </div>
+    </noscript>
   </header>
   

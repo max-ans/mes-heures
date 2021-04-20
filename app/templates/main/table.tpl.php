@@ -4,7 +4,7 @@
   </p>
 
 </section>
-<main class="container mt-5">
+<main class="container mt-4">
 <form action="<?= $router->generate('table-post') ?>" class="table__form" method="post">
   <div class="table-responsive">
     <?php 
@@ -302,7 +302,7 @@
     <input type="hidden" name="token" value="<?=$token?>">
     </form>
   </div>
-  <section class="printing mt-5 user__action ">
+  <section class="printing mt-3 user__action ">
     <button type="button" class="btn btn-outline-primary btn-lg btn-block print ">Imprimer le tableau</button>
   </section>
 
