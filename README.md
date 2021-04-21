@@ -43,7 +43,7 @@ DB_USERNAME=
 DB_PASSWORD=
 ```
 
-Et complétez ce fichier avec vos informations de connection.
+Et complétez ce fichier avec vos informations de connexion.
 
 __5) Lancer l'application :__
 
